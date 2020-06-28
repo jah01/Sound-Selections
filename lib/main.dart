@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:soundselections/screens/home_screen.dart';
+import 'package:soundselections/screens/home/home_screen.dart';
 
 void main() {
   runApp(MyApp());
