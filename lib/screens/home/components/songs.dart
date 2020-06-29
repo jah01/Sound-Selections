@@ -129,21 +129,62 @@ class _SongList1 extends State<SongList1> {
 //},
 //),
 
-class SongList extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    populateAlbums();
-      return  Container(
-            child: CarouselSlider(
-              options: CarouselOptions(
-                aspectRatio: 2.0,
-                enlargeCenterPage: true,
-                enableInfiniteScroll: false,
-                initialPage: 0,
-                autoPlay: false,
-              ),
-              items: images,
-            )
-      );
-  }
-}
+//class SongList extends StatelessWidget {
+//  @override
+//  Widget build(BuildContext context) {
+//    populateAlbums();
+//      return  Container(
+//            child: CarouselSlider(
+//              options: CarouselOptions(
+//                aspectRatio: 2.0,
+//                enlargeCenterPage: true,
+//                enableInfiniteScroll: false,
+//                initialPage: 0,
+//                autoPlay: false,
+//              ),
+//              items: images,
+//            )
+//      );
+//  }
+//}
+
+
+
+
+
+//class SongList extends StatefulWidget {
+//  SongList(this.index);
+//  int index;
+//
+//  @override
+//  _SongList createState() => _SongList(index);
+//}
+//
+//class _SongList extends State<SongList> {
+//  int selectedIndex;
+//  _SongList(this.selectedIndex);
+//
+//  @override
+//  Widget build(BuildContext context) {
+//    return Container(
+//      height: 200,
+//      width: 200,
+//      padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
+//      child: GestureDetector(
+//        onTap: () {
+//          setState(() {
+//            selectedIndex = i;
+//          });
+//        },
+//        child: Column(
+//          crossAxisAlignment: CrossAxisAlignment.start,
+//          children: <Widget>[
+//            Container(
+//
+//            ),
+//          ],
+//        ),
+//      ),
+//    );
+//  }
+//}

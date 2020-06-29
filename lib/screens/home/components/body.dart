@@ -9,7 +9,7 @@ class Body extends StatelessWidget {
       child: Column(
         children: <Widget>[
           CategoryList(),
-          SongList(),
+          //SongList(),
         ],
       ),
     );
