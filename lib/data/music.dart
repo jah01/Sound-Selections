@@ -1,7 +1,14 @@
+import 'package:flutter/cupertino.dart';
+
 class Music {
-  final String title, author, album, label, description, authorImg, albumImg, authorC, imageC;
+  final String title, author, album, label, description, authorImg, authorC, imageC;
   final DateTime release;
   final List<String> genre, writer, producer;
+  final Image albumImg;
+
+  Image get getAlbumImg {
+    return albumImg;
+  }
 
   Music(
     this.title,
@@ -29,7 +36,7 @@ List<Music> songs = [
       "chance.png",
       "FOX Sports: https://www.youtube.com/watch?v=YT86shZnD38, CC BY 3.0, https://commons.wikimedia.org/w/index.php?curid=72191644",
       "10 Day",
-      "10DayTape.jpeg",
+      Image.asset("assets/images/10DayTape.jpeg"),
       "Fair use: https://en.wikipedia.org/w/index.php?curid=50047311",
       DateTime(2012, 4, 3),
       "Independent",
@@ -43,7 +50,7 @@ List<Music> songs = [
       "chance.png",
       "FOX Sports: https://www.youtube.com/watch?v=YT86shZnD38, CC BY 3.0, https://commons.wikimedia.org/w/index.php?curid=72191644",
       "10 Day",
-      "10DayTape.jpeg",
+      Image.asset("assets/images/10DayTape.jpeg"),
       "Fair use: https://en.wikipedia.org/w/index.php?curid=50047311",
       DateTime(2012, 4, 3),
       "Independent",
@@ -57,7 +64,7 @@ List<Music> songs = [
       "chance.png",
       "FOX Sports: https://www.youtube.com/watch?v=YT86shZnD38, CC BY 3.0, https://commons.wikimedia.org/w/index.php?curid=72191644",
       "10 Day",
-      "10DayTape.jpeg",
+      Image.asset("assets/images/10DayTape.jpeg"),
       "Fair use: https://en.wikipedia.org/w/index.php?curid=50047311",
       DateTime(2012, 4, 3),
       "Independent",

@@ -12,8 +12,8 @@ class _CategoryList extends State<CategoryList> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: defaultPadding * 1.5),
-      height: 120,
+      padding: EdgeInsets.symmetric(vertical: 4.0),
+      height: 100,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: categories.length,
@@ -29,15 +29,21 @@ class _CategoryList extends State<CategoryList> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                      categories[i],
-                      style: TextStyle(
-                        color: selectedIndex == i ? textColor : textLightColor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w400,
+                    Container(
+                      height: 50,
+                      color: Colors.transparent,
+                      child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Text(
+                        categories[i],
+                        style: TextStyle(
+                          color: selectedIndex == i ? textColor : textLightColor,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                        ),),
                       ),
                     ),
-                    Container(margin: EdgeInsets.symmetric(vertical: defaultPadding / 2),),
+                    Container(margin: EdgeInsets.symmetric(vertical: 6.0),),
                     Container(
                       height: 6,
                       width: 60,
