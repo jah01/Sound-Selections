@@ -180,10 +180,36 @@ class _CategoryList extends State<CategoryList> {
                             ListView.builder(
                               shrinkWrap: true,
                               physics: NeverScrollableScrollPhysics(),
-                              itemCount: getAtIndex(selectedIndex).length,
+                              itemCount: featured(getAtIndex(selectedIndex)).length,
                               itemBuilder: (context, j) {
-                                return Image.network(getAtIndex(selectedIndex)[j].getAlbumImg, width: 100, height: 100,);
-                                //return Image.asset();
+                                Music current = getAtIndex(selectedIndex)[j];
+                                return Padding(
+                                  padding: EdgeInsets.only(top: 8.0),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Image.network(current.getAlbumImg, width: 120, height: 120,),
+                                        Padding(padding: EdgeInsets.symmetric(horizontal: 8.0)),
+                                        Container(
+                                          height: 120,
+                                          child: Align(
+                                            alignment: Alignment.topLeft,
+                                            child: Column(
+                                              children: <Widget>[
+                                                Text(
+                                                  current.getTitle + "\n" + current.getArtist + "\n" + current.getAlbum,
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        )
+
+                                      ],
+                                    ),
+                                );
                               }
                             )
                             //TODO add the featured albums here

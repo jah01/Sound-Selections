@@ -34,6 +34,22 @@ class Music {
     return this.albumImg;
   }
 
+  String get getTitle {
+    return this.title;
+  }
+
+  String get getAlbum {
+    return this.album;
+  }
+
+  String get getArtist {
+    return this.artist;
+  }
+
+  bool get getIsFeatured {
+    return this.isFeatured;
+  }
+
 }
 
 List<Music> songs = [

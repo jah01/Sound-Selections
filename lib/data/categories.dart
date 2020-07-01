@@ -20,3 +20,14 @@ void populateAll() {
 List<Music> getAtIndex(int index) {
   return sortedCategories[index];
 }
+
+List<Music> featured(List<Music> list) {
+  List<Music> feat = new List();
+  for (int i = 0; i < list.length; i++) {
+    var temp = list[i];
+    if (temp.getIsFeatured) {
+      feat.add(temp);
+    }
+  }
+  return feat;
+}
