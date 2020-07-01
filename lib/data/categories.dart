@@ -16,3 +16,7 @@ void populateAll() {
     }
   }
 }
+
+List<Music> getAtIndex(int index) {
+  return sortedCategories[index];
+}

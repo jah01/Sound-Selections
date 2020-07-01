@@ -1,5 +1,7 @@
 import 'package:flutter/animation.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:soundselections/data/music.dart';
 import 'package:soundselections/defaults.dart';
 import '../../../data/categories.dart';
 
@@ -11,23 +13,7 @@ Color changeColor(int index) {
   }
 }
 
-class CustomColor {
-  Color c;
-  CustomColor(this.c);
-  Color get getC {
-    return c;
-  }
-  void setC(int index) {
-    if (index == 1) {
-      this.c = Color(0xffffff00);
-    } else {
-      this.c = Color(0xffff00ff);
-    }
-  }
-}
-
 class CategoryList extends StatefulWidget {
-
   @override
   _CategoryList createState() => _CategoryList();
 }
@@ -40,9 +26,10 @@ class _CategoryList extends State<CategoryList> {
     ScrollController _controller = new ScrollController();
 
     void goToTop() {
-      _controller.animateTo((0), // 100 is the height of container and index of 6th element is 5
-          duration: const Duration(milliseconds: 100),
-          curve: Curves.easeOut);
+      _controller.jumpTo(0);
+//      _controller.animateTo((0), // 100 is the height of container and index of 6th element is 5
+//          duration: const Duration(milliseconds: 100),
+//          curve: Curves.easeOut);
     }
 
     Color c = changeColor(selectedIndex);
@@ -59,15 +46,13 @@ class _CategoryList extends State<CategoryList> {
                 return Column(
                   children: <Widget>[
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: defaultPadding),
                       child: GestureDetector(
                         onTap: () {
                           setState(() {
                             selectedIndex = i;
                             c = changeColor(selectedIndex);
-                            //setColor(c);
-//                            c.setC(selectedIndex);
-//                            print(c.getC.toString());
                           });
                           goToTop();
                         },
@@ -82,13 +67,18 @@ class _CategoryList extends State<CategoryList> {
                                 child: Text(
                                   categories[i],
                                   style: TextStyle(
-                                    color: selectedIndex == i ? textColor : textLightColor,
+                                    color: selectedIndex == i
+                                        ? textColor
+                                        : textLightColor,
                                     fontSize: 20,
-                                    fontWeight: FontWeight.w400,
-                                  ),),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
                               ),
                             ),
-                            Container(margin: EdgeInsets.symmetric(vertical: 6.0),),
+                            Container(
+                              margin: EdgeInsets.symmetric(vertical: 6.0),
+                            ),
                             Container(
                               height: 6,
                               width: 60,
@@ -106,45 +96,69 @@ class _CategoryList extends State<CategoryList> {
                   ],
                 );
               },
-            )
+            )),
+        Padding(
+          padding: EdgeInsets.only(top: 12.0),
         ),
-        Padding(padding: EdgeInsets.only(top: 12.0),),
-
-
-//          child: Column(
-//          children: <Widget>[
-            Container(
+        Container(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.width - (MediaQuery.of(context).padding.top - MediaQuery.of(context).padding.bottom - 120.0),
-              child: ListView.builder(
-                controller: _controller,
-                scrollDirection: Axis.vertical,
-                itemCount: 1,
-                itemBuilder: (context, i) {
-                  print("COLOR: " + c.toString());
-                  return Column(
-                    children: <Widget>[
-                      Container(
-                        height: 5000,
-                        width: 50,
-                        color: c,
+          height: MediaQuery.of(context).size.width -
+              (MediaQuery.of(context).padding.top -
+                  MediaQuery.of(context).padding.bottom -
+                  120.0),
+          child: ListView.builder(
+            controller: _controller,
+            scrollDirection: Axis.vertical,
+            itemCount: 1,
+            itemBuilder: (context, i) {
+              List<Music> current = getAtIndex(selectedIndex);
+              print("COLOR: " + c.toString());
+              return Padding(
+                padding: EdgeInsets.symmetric(horizontal: defaultPadding),
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      height: 260.0,
+                      width: MediaQuery.of(context).size.width,
+                      color: Colors.transparent,
+                      child: Container(
+                        padding: EdgeInsets.all(defaultPadding),
+                        decoration: defaultDecoration,
+                        child: Column(
+                          children: <Widget>[
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                "New Picks",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                                padding: EdgeInsets.symmetric(vertical: 8.0)),
+                            Expanded(
+//                                  padding: EdgeInsets.symmetric(vertical: defaultPadding),
+//                                  height: 200,
+//                                  width: MediaQuery.of(context).size.width,
+//                                  color: c,
+                              child: Container(
+                                height: double.infinity,
+                                width: MediaQuery.of(context).size.width,
+                                color: c,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      Container(
-                        height: 20,
-                        width: 50,
-                        color: Colors.black,
-                      ),
-                      Divider(
-                          color: Colors.black
-                      )
-                    ],
-                  );
-                },
-              ),
-            ),
-//          ],
-//        ),
-        //),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
       ],
     );
   }
