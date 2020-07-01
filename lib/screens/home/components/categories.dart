@@ -159,7 +159,7 @@ class _CategoryList extends State<CategoryList> {
                         padding: EdgeInsets.symmetric(vertical: defaultPadding * 1.5)),
                     //Featured section------------------------------------------
                     Container(
-                      height: 520.0,
+                      //height: 520.0,
                       width: MediaQuery.of(context).size.width,
                       color: Colors.transparent,
                       child: Container(
@@ -177,6 +177,15 @@ class _CategoryList extends State<CategoryList> {
                                 ),
                               ),
                             ),
+                            ListView.builder(
+                              shrinkWrap: true,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: getAtIndex(selectedIndex).length,
+                              itemBuilder: (context, j) {
+                                return Image.network(getAtIndex(selectedIndex)[j].getAlbumImg, width: 100, height: 100,);
+                                //return Image.asset();
+                              }
+                            )
                             //TODO add the featured albums here
                           ],
                         ),

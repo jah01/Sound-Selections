@@ -30,6 +30,10 @@ class Music {
     return this.category;
   }
 
+  String get getAlbumImg {
+    return this.albumImg;
+  }
+
 }
 
 List<Music> songs = [
