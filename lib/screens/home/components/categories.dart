@@ -26,10 +26,10 @@ class _CategoryList extends State<CategoryList> {
     ScrollController _controller = new ScrollController();
 
     void goToTop() {
-      _controller.jumpTo(0);
-//      _controller.animateTo((0), // 100 is the height of container and index of 6th element is 5
-//          duration: const Duration(milliseconds: 100),
-//          curve: Curves.easeOut);
+//      _controller.jumpTo(0);
+      _controller.animateTo((0),
+          duration: const Duration(milliseconds: 400),
+          curve: Curves.easeOut);
     }
 
     Color c = changeColor(selectedIndex);
@@ -97,15 +97,15 @@ class _CategoryList extends State<CategoryList> {
                 );
               },
             )),
-        Padding(
-          padding: EdgeInsets.only(top: 12.0),
-        ),
+//        Padding(
+//          padding: EdgeInsets.only(top: 12.0),
+//        ),
         Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.width -
               (MediaQuery.of(context).padding.top -
                   MediaQuery.of(context).padding.bottom -
-                  120.0),
+                  132.0),
           child: ListView.builder(
             controller: _controller,
             scrollDirection: Axis.vertical,
@@ -114,9 +114,10 @@ class _CategoryList extends State<CategoryList> {
               List<Music> current = getAtIndex(selectedIndex);
               print("COLOR: " + c.toString());
               return Padding(
-                padding: EdgeInsets.symmetric(horizontal: defaultPadding),
+                padding: EdgeInsets.symmetric(horizontal: defaultPadding, vertical: defaultPadding),
                 child: Column(
                   children: <Widget>[
+                    //New Picks section-----------------------------------------
                     Container(
                       height: 260.0,
                       width: MediaQuery.of(context).size.width,
@@ -147,8 +148,63 @@ class _CategoryList extends State<CategoryList> {
                                 height: double.infinity,
                                 width: MediaQuery.of(context).size.width,
                                 color: c,
+                                //TODO in this container, show the latest 5 songs
                               ),
                             ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                        padding: EdgeInsets.symmetric(vertical: defaultPadding * 1.5)),
+                    //Featured section------------------------------------------
+                    Container(
+                      height: 520.0,
+                      width: MediaQuery.of(context).size.width,
+                      color: Colors.transparent,
+                      child: Container(
+                        padding: EdgeInsets.all(defaultPadding),
+                        decoration: defaultDecoration,
+                        child: Column(
+                          children: <Widget>[
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                "Featured",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                            //TODO add the featured albums here
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                        padding: EdgeInsets.symmetric(vertical: defaultPadding * 1.5)),
+                    //Other section
+                    Container(
+                      height: 1040.0,
+                      width: MediaQuery.of(context).size.width,
+                      color: Colors.transparent,
+                      child: Container(
+                        padding: EdgeInsets.all(defaultPadding),
+                        decoration: defaultDecoration,
+                        child: Column(
+                          children: <Widget>[
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                "Other Selections",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                            //TODO add all other songs here
                           ],
                         ),
                       ),

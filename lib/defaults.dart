@@ -15,10 +15,10 @@ const defaultShadow = BoxShadow(
 
 final defaultDecoration = BoxDecoration(
   color: Colors.white,
-  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+  borderRadius: BorderRadius.all(Radius.circular(16.0)),
   boxShadow: [
     BoxShadow(
-      color: Colors.black.withOpacity(0.075),
+      color: Colors.grey.withOpacity(0.2),
       spreadRadius: 2,
       blurRadius: 6,
       offset: Offset(0, 0), // changes position of shadow
