@@ -11,6 +11,21 @@ Color changeColor(int index) {
   }
 }
 
+class CustomColor {
+  Color c;
+  CustomColor(this.c);
+  Color get getC {
+    return c;
+  }
+  void setC(int index) {
+    if (index == 1) {
+      this.c = Color(0xffffff00);
+    } else {
+      this.c = Color(0xffff00ff);
+    }
+  }
+}
+
 class CategoryList extends StatefulWidget {
 
   @override
@@ -22,7 +37,16 @@ class _CategoryList extends State<CategoryList> {
 
   @override
   Widget build(BuildContext context) {
+    ScrollController _controller = new ScrollController();
+
+    void goToTop() {
+      _controller.animateTo((0), // 100 is the height of container and index of 6th element is 5
+          duration: const Duration(milliseconds: 100),
+          curve: Curves.easeOut);
+    }
+
     Color c = changeColor(selectedIndex);
+    //CustomColor c = new CustomColor(Color(0xffff00ff));
     return Column(
       children: <Widget>[
         Container(
@@ -41,8 +65,11 @@ class _CategoryList extends State<CategoryList> {
                           setState(() {
                             selectedIndex = i;
                             c = changeColor(selectedIndex);
-                            print(c.toString());
+                            //setColor(c);
+//                            c.setC(selectedIndex);
+//                            print(c.getC.toString());
                           });
+                          goToTop();
                         },
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,22 +108,43 @@ class _CategoryList extends State<CategoryList> {
               },
             )
         ),
-        Container(
+        Padding(padding: EdgeInsets.only(top: 12.0),),
+
+
+//          child: Column(
+//          children: <Widget>[
+            Container(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height - (MediaQuery.of(context).padding.top + 140.0),
-          child: ListView.builder(
-            scrollDirection: Axis.vertical,
-            itemCount: 1,
-            itemBuilder: (context, i) {
-              print("COLOR: " + c.toString());
-              return Container(
-                height: 50,
-                width: 50,
-                color: c,
-              );
-            },
-          ),
-        )
+          height: MediaQuery.of(context).size.width - (MediaQuery.of(context).padding.top - MediaQuery.of(context).padding.bottom - 120.0),
+              child: ListView.builder(
+                controller: _controller,
+                scrollDirection: Axis.vertical,
+                itemCount: 1,
+                itemBuilder: (context, i) {
+                  print("COLOR: " + c.toString());
+                  return Column(
+                    children: <Widget>[
+                      Container(
+                        height: 5000,
+                        width: 50,
+                        color: c,
+                      ),
+                      Container(
+                        height: 20,
+                        width: 50,
+                        color: Colors.black,
+                      ),
+                      Divider(
+                          color: Colors.black
+                      )
+                    ],
+                  );
+                },
+              ),
+            ),
+//          ],
+//        ),
+        //),
       ],
     );
   }
