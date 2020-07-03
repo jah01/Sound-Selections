@@ -16,6 +16,7 @@ class _SongList extends State<SongList> {
     return Container (
       height: 30,
       width: 30,
+      color: Colors.blue,
     );
   }
 }
