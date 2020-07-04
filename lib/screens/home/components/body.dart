@@ -94,7 +94,9 @@ class _Body extends State<Body> {
       selectedIndex.setIndex(i);
     });
   }
-  isPressed = false;
+  new Timer(const Duration(milliseconds: 500), () {
+    isPressed = false;
+    });
 
 //  Timer(const Duration(milliseconds: 300), () {
 //      setState(() {
