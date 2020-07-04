@@ -6,6 +6,8 @@ import 'package:soundselections/defaults.dart';
 import 'categories.dart';
 import 'songs.dart';
 
+bool isPressed = false;
+
 class Selected {
   int selectedIndex;
   Selected(this.selectedIndex);
@@ -47,6 +49,7 @@ class _Body extends State<Body> {
 
   void topNavTapped(int i) {
 
+    isPressed = true;
     pageController.animateToPage(i,
         duration: Duration(milliseconds: 500), curve: Curves.ease);
     selectedIndex.setIndex(i);
@@ -83,7 +86,15 @@ class _Body extends State<Body> {
 //      //this.selectedIndex = i;
 //      selectedIndex.setIndex(i);
 //    });
-  selectedIndex.setIndex(i);
+
+  if (isPressed) {
+    selectedIndex.setIndex(i);
+  } else {
+    setState(() {
+      selectedIndex.setIndex(i);
+    });
+  }
+  isPressed = false;
 
 //  Timer(const Duration(milliseconds: 300), () {
 //      setState(() {
