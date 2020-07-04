@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:soundselections/data/music.dart';
 import 'package:soundselections/defaults.dart';
 import '../../../data/categories.dart';
+import 'body.dart';
 
 Color changeColor(int index) {
   if (index == 1) {
@@ -15,22 +16,23 @@ Color changeColor(int index) {
 
 class CategoryList extends StatefulWidget {
 
+  Selected selectedIndex;
   final Function topNavTapped;
-  CategoryList(this.topNavTapped);
+  CategoryList(this.selectedIndex, this.topNavTapped);
 
   @override
-  _CategoryList createState() => _CategoryList(topNavTapped);
+  _CategoryList createState() => _CategoryList(selectedIndex, topNavTapped);
 }
 
 class _CategoryList extends State<CategoryList> {
 
+  Selected selectedIndex;
   final Function topNavTapped;
-  _CategoryList(this.topNavTapped);
-
-  int selectedIndex = 0;
+  _CategoryList(this.selectedIndex, this.topNavTapped);
 
   @override
   Widget build(BuildContext context) {
+    print("TEST: " + selectedIndex.toString());
     ScrollController _controller = new ScrollController();
 
     void goToTop() {
@@ -40,7 +42,7 @@ class _CategoryList extends State<CategoryList> {
           curve: Curves.easeOut);
     }
 
-    Color c = changeColor(selectedIndex);
+    //Color c = changeColor(selectedIndex);
     //CustomColor c = new CustomColor(Color(0xffff00ff));
     return Column(
       children: <Widget>[
@@ -59,7 +61,8 @@ class _CategoryList extends State<CategoryList> {
                       child: GestureDetector(
                         onTap: () {
                           setState(() {
-                            selectedIndex = topNavTapped(i);
+                            selectedIndex.setIndex(i);
+                            //selectedIndex = i;
                           });
                           //goToTop();
                         },
@@ -74,7 +77,7 @@ class _CategoryList extends State<CategoryList> {
                                 child: Text(
                                   categories[i],
                                   style: TextStyle(
-                                    color: selectedIndex == i
+                                    color: selectedIndex.getIndex == i
                                         ? textColor
                                         : textLightColor,
                                     fontSize: 20,
@@ -91,7 +94,7 @@ class _CategoryList extends State<CategoryList> {
                               width: 60,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10.0),
-                                color: selectedIndex == i
+                                color: selectedIndex.getIndex == i
                                     ? secondaryColor
                                     : Colors.transparent,
                               ),

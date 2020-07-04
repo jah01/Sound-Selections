@@ -1,7 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:soundselections/data/categories.dart';
+import 'package:soundselections/defaults.dart';
 import 'categories.dart';
 import 'songs.dart';
+
+class Selected {
+  int selectedIndex;
+  Selected(this.selectedIndex);
+
+  int get getIndex {
+    return selectedIndex;
+  }
+
+  void setIndex(int i) {
+    selectedIndex = i;
+  }
+}
 
 class Body extends StatefulWidget {
   Body({Key key}) : super(key: key);
@@ -12,36 +26,73 @@ class Body extends StatefulWidget {
 
 class _Body extends State<Body> {
 
-  int _selectedIndex;
-  PageController _pageController;
+
+  Selected selectedIndex = new Selected(0);
+  PageController pageController;
 
   @override
   void initState() {
     super.initState();
-    _selectedIndex = 0;
-    _pageController = new PageController();
+    selectedIndex.setIndex(0);
+    pageController = new PageController();
   }
 
   @override
   void dispose() {
     super.dispose();
-    _pageController.dispose();
+    pageController.dispose();
   }
 
-  int topNavTapped(int i) {
-    this._selectedIndex = i;
-    return _selectedIndex;
+  void topNavTapped(int i) {
+    setState(() {
+      //this.selectedIndex = i;
+      selectedIndex.setIndex(i);
+      this.pageController.animateToPage(i,
+          duration: Duration(milliseconds: 300), curve: Curves.ease);
+    });
+
+    //return _selectedIndex;
+
     //c = changeColor(_selectedIndex);
   }
 
+  void updateUnderline(int i) {
+    setState(() {
+      //this.selectedIndex = i;
+      selectedIndex.setIndex(i);
+    });
+//    setState(() {
+//      setSI(i);
+//    });
+//    setState(() {
+//      //
+//      //changeIndex(i);
+//    });
+  //topNavTapped(i);
+//    this._selectedIndex = i;
+  print(selectedIndex);
+  }
+
+//  int changeIndex(int i) {
+//    this._selectedIndex = i;
+//  }
+//
+//  void setSI(int i) {
+//    this._selectedIndex = i;
+//  }
+//
+//  int getSI() {
+//    return _selectedIndex;
+//  }
+
   @override
   Widget build(BuildContext context) {
-    populateAll();
+    print(selectedIndex);
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          CategoryList(topNavTapped),
-          SongList(),
+          CategoryList(selectedIndex, topNavTapped),
+          SongList(pageController, updateUnderline),
         ],
       ),
     );

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:soundselections/data/categories.dart';
 import '../../defaults.dart';
 import 'components/body.dart';
 
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    populateAll();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
