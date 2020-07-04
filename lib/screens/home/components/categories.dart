@@ -61,7 +61,8 @@ class _CategoryList extends State<CategoryList> {
                       child: GestureDetector(
                         onTap: () {
                           setState(() {
-                            selectedIndex.setIndex(i);
+                            //selectedIndex.setIndex(i);
+                            topNavTapped(i);
                             //selectedIndex = i;
                           });
                           //goToTop();

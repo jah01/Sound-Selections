@@ -39,6 +39,11 @@ class _SongList extends State<SongList> {
               width: 30,
               height: 80,
               color: Colors.grey,
+              child: Center(
+                child: Text(
+                  "${i}",
+                ),
+              ),
             );
           },
         ),

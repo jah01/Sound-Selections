@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:soundselections/data/categories.dart';
 import 'package:soundselections/defaults.dart';
@@ -44,12 +46,32 @@ class _Body extends State<Body> {
   }
 
   void topNavTapped(int i) {
-    setState(() {
-      //this.selectedIndex = i;
-      selectedIndex.setIndex(i);
-      this.pageController.animateToPage(i,
-          duration: Duration(milliseconds: 300), curve: Curves.ease);
-    });
+
+    pageController.animateToPage(i,
+        duration: Duration(milliseconds: 500), curve: Curves.ease);
+    selectedIndex.setIndex(i);
+//    Timer(Duration(milliseconds: 500), () {
+//
+//    });
+//    _timer = new Timer(const Duration(milliseconds: 500), () {
+//      setState(() {
+//        selectedIndex.setIndex(i);
+//      });
+//    });
+//    setState(() {
+//      //this.selectedIndex = i;
+//      pageController.animateToPage(i,
+//          duration: Duration(milliseconds: 500), curve: Curves.ease);
+//      //pageController.jumpToPage(i);
+//      //selectedIndex.setIndex(i);
+////      _timer = new Timer(const Duration(milliseconds: 500), () {
+////        setState(() {
+////          selectedIndex.setIndex(i);
+////        });
+////      });
+//    });
+
+
 
     //return _selectedIndex;
 
@@ -57,10 +79,23 @@ class _Body extends State<Body> {
   }
 
   void updateUnderline(int i) {
-    setState(() {
-      //this.selectedIndex = i;
-      selectedIndex.setIndex(i);
-    });
+//    setState(() {
+//      //this.selectedIndex = i;
+//      selectedIndex.setIndex(i);
+//    });
+  selectedIndex.setIndex(i);
+
+//  Timer(const Duration(milliseconds: 300), () {
+//      setState(() {
+//        selectedIndex.setIndex(i);
+//      });
+
+
+//    _timer = new Timer(const Duration(milliseconds: 300), () {
+//      setState(() {
+//        selectedIndex.setIndex(i);
+//      });
+//    });
 //    setState(() {
 //      setSI(i);
 //    });
