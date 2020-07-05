@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:soundselections/data/categories.dart';
 import 'package:soundselections/defaults.dart';
 import 'categories.dart';
@@ -31,6 +32,7 @@ class Body extends StatefulWidget {
 class _Body extends State<Body> {
 
 
+  ItemScrollController itemScrollController;
   Selected selectedIndex = new Selected(0);
   PageController pageController;
 
@@ -39,6 +41,7 @@ class _Body extends State<Body> {
     super.initState();
     selectedIndex.setIndex(0);
     pageController = new PageController();
+    itemScrollController = new ItemScrollController();
   }
 
   @override
@@ -91,9 +94,17 @@ class _Body extends State<Body> {
     selectedIndex.setIndex(i);
   } else {
     setState(() {
+      itemScrollController.scrollTo(
+          index: i,
+          duration: Duration(milliseconds: 500),
+          curve: Curves.easeInOutCubic);
       selectedIndex.setIndex(i);
     });
   }
+//  itemScrollController.scrollTo(
+//      index: i,
+//      duration: Duration(milliseconds: 500),
+//      curve: Curves.easeInOutCubic);
   new Timer(const Duration(milliseconds: 500), () {
     isPressed = false;
     });
@@ -139,7 +150,7 @@ class _Body extends State<Body> {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          CategoryList(selectedIndex, topNavTapped),
+          CategoryList(selectedIndex, topNavTapped, itemScrollController),
           SongList(pageController, updateUnderline),
         ],
       ),

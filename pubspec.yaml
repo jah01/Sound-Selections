@@ -35,6 +35,8 @@ dependencies:
 
   carousel_slider: ^2.2.1 #for the carousel to work
 
+  scrollable_positioned_list: ^0.1.6 #for the top nav to scroll with page changes
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

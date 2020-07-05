@@ -1,6 +1,7 @@
 import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:soundselections/data/music.dart';
 import 'package:soundselections/defaults.dart';
 import '../../../data/categories.dart';
@@ -18,17 +19,21 @@ class CategoryList extends StatefulWidget {
 
   Selected selectedIndex;
   final Function topNavTapped;
-  CategoryList(this.selectedIndex, this.topNavTapped);
+  ItemScrollController itemScrollController;
+  CategoryList(this.selectedIndex, this.topNavTapped, this.itemScrollController);
 
   @override
-  _CategoryList createState() => _CategoryList(selectedIndex, topNavTapped);
+  _CategoryList createState() => _CategoryList(selectedIndex, topNavTapped, itemScrollController);
 }
 
 class _CategoryList extends State<CategoryList> {
 
   Selected selectedIndex;
   final Function topNavTapped;
-  _CategoryList(this.selectedIndex, this.topNavTapped);
+  ItemScrollController itemScrollController;
+  _CategoryList(this.selectedIndex, this.topNavTapped, this.itemScrollController);
+
+  //ItemScrollController itemScrollController = ItemScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +54,10 @@ class _CategoryList extends State<CategoryList> {
         Container(
             padding: EdgeInsets.symmetric(vertical: 4.0),
             height: 100,
-            child: ListView.builder(
+            child: ScrollablePositionedList.builder(
               scrollDirection: Axis.horizontal,
               itemCount: categories.length,
+              itemScrollController: itemScrollController,
               itemBuilder: (context, i) {
                 return Column(
                   children: <Widget>[
@@ -63,6 +69,10 @@ class _CategoryList extends State<CategoryList> {
                           setState(() {
                             //selectedIndex.setIndex(i);
                             topNavTapped(i);
+                            itemScrollController.scrollTo(
+                                index: i,
+                                duration: Duration(milliseconds: 500),
+                                curve: Curves.easeInOutCubic);
                             //selectedIndex = i;
                           });
                           //goToTop();
