@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:soundselections/data/categories.dart';
 import '../../../data/music.dart';
@@ -56,6 +57,19 @@ class _SongList extends State<SongList> {
                       child: Column(
                         children: <Widget>[
                           //New Picks section---------------------------------
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: Text(
+                              "New Picks",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                              padding:
+                              EdgeInsets.symmetric(vertical: 8.0)),
                           Container(
                             height: 260.0,
                             width: MediaQuery.of(context).size.width,
@@ -65,23 +79,33 @@ class _SongList extends State<SongList> {
                               decoration: defaultDecoration,
                               child: Column(
                                 children: <Widget>[
-                                  Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Text(
-                                      "New Picks",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 20,
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                      padding:
-                                          EdgeInsets.symmetric(vertical: 8.0)),
                                   Expanded(
                                     child: Container(
                                       height: double.infinity,
                                       width: MediaQuery.of(context).size.width,
+                                      child: CarouselSlider.builder(
+                                        options: CarouselOptions(
+                                            aspectRatio: 16/9,
+                                            viewportFraction: 0.8,
+                                            initialPage: 0,
+                                            enableInfiniteScroll: true,
+                                            reverse: false,
+                                            autoPlay: true,
+                                            autoPlayInterval: Duration(seconds: 5),
+                                            autoPlayAnimationDuration: Duration(milliseconds: 1000),
+                                            autoPlayCurve: Curves.easeInOut,
+                                            enlargeCenterPage: true,
+                                        scrollDirection: Axis.horizontal),
+                                        itemCount: 15,
+                                        itemBuilder: (context, index) {
+                                          return Container(
+                                            width: double.infinity,
+                                            height: double.infinity,
+                                            color: Colors.blue,
+                                            child: Text(index.toString()),
+                                          );
+                                        },
+                                      ),
                                       //TODO in this container, show the latest 5 songs
                                     ),
                                   ),
@@ -91,8 +115,19 @@ class _SongList extends State<SongList> {
                           ),
                           Padding(
                               padding: EdgeInsets.symmetric(
-                                  vertical: defaultPadding * 1.5)),
+                                  vertical: defaultPadding)),
                           //Featured section----------------------------------
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: Text(
+                              "Featured",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                          Padding(padding: EdgeInsets.symmetric(vertical: 8.0),),
                           Container(
                             width: MediaQuery.of(context).size.width,
                             color: Colors.transparent,
@@ -101,25 +136,13 @@ class _SongList extends State<SongList> {
                               decoration: defaultDecoration,
                               child: Column(
                                 children: <Widget>[
-                                  Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Text(
-                                      "Featured",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 20,
-                                      ),
-                                    ),
-                                  ),
                                   ListView.builder(
                                       shrinkWrap: true,
                                       physics: NeverScrollableScrollPhysics(),
                                       itemCount: featured(getAtIndex(i)).length,
                                       itemBuilder: (context, j) {
                                         Music current = getAtIndex(i)[j];
-                                        return Padding(
-                                          padding: EdgeInsets.only(top: 8.0),
-                                          child: Row(
+                                        return Row(
                                             children: <Widget>[
                                               Image.network(
                                                 current.getAlbumImg,
@@ -152,8 +175,7 @@ class _SongList extends State<SongList> {
                                                 ),
                                               )
                                             ],
-                                          ),
-                                        );
+                                          );
                                       })
                                 ],
                               ),
