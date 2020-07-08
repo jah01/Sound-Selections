@@ -75,40 +75,103 @@ class _SongList extends State<SongList> {
                             width: MediaQuery.of(context).size.width,
                             color: Colors.transparent,
                             child: Container(
-                              padding: EdgeInsets.all(defaultPadding),
-                              decoration: defaultDecoration,
-                              child: Column(
+                              //padding: EdgeInsets.all(defaultPadding),
+                              //decoration: defaultDecoration,
+                              child: Stack(
                                 children: <Widget>[
-                                  Expanded(
+                                  Container(
                                     child: Container(
+                                      foregroundDecoration: new BoxDecoration(
+                                        color: Colors.purple,
+                                        gradient: new LinearGradient(
+                                          colors: [Colors.white, Colors.white.withOpacity(0.0), Colors.white.withOpacity(0.0), Colors.white],
+                                          stops: [0, .05, .95, 1],
+                                        ),
+                                      ),
                                       height: double.infinity,
                                       width: MediaQuery.of(context).size.width,
                                       child: CarouselSlider.builder(
                                         options: CarouselOptions(
-                                            aspectRatio: 16/9,
-                                            viewportFraction: 0.8,
+                                            aspectRatio: 16 / 9,
+                                            viewportFraction: 0.6,
                                             initialPage: 0,
                                             enableInfiniteScroll: true,
                                             reverse: false,
                                             autoPlay: true,
-                                            autoPlayInterval: Duration(seconds: 5),
-                                            autoPlayAnimationDuration: Duration(milliseconds: 1000),
+                                            autoPlayInterval:
+                                                Duration(seconds: 5),
+                                            autoPlayAnimationDuration:
+                                                Duration(milliseconds: 1000),
                                             autoPlayCurve: Curves.easeInOut,
                                             enlargeCenterPage: true,
-                                        scrollDirection: Axis.horizontal),
-                                        itemCount: 15,
+                                            scrollDirection: Axis.horizontal,
+                                        ),
+                                        itemCount: 5,
                                         itemBuilder: (context, index) {
                                           return Container(
-                                            width: double.infinity,
-                                            height: double.infinity,
-                                            color: Colors.blue,
-                                            child: Text(index.toString()),
+                                            //margin: EdgeInsets.all(5.0),
+                                            child: ClipRRect(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(8.0)),
+                                                child: Stack(
+                                                  children: <Widget>[
+                                                    Image.network("https://upload.wikimedia.org/wikipedia/en/1/11/Chance10Day.jpeg"),
+                                                    Positioned(
+                                                      bottom: 0.0,
+                                                      left: 0.0,
+                                                      right: 0.0,
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          gradient:
+                                                              LinearGradient(
+                                                            colors: [
+                                                              Color.fromARGB(
+                                                                  200, 0, 0, 0),
+                                                              Color.fromARGB(
+                                                                  0, 0, 0, 0)
+                                                            ],
+                                                            begin: Alignment
+                                                                .bottomCenter,
+                                                            end: Alignment
+                                                                .topCenter,
+                                                          ),
+                                                        ),
+                                                        padding: EdgeInsets
+                                                            .symmetric(
+                                                                vertical: 10.0,
+                                                                horizontal:
+                                                                    20.0),
+                                                        child: Text(
+                                                          'No. $index image',
+                                                          style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontSize: 20.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                )),
                                           );
                                         },
                                       ),
                                       //TODO in this container, show the latest 5 songs
                                     ),
                                   ),
+//                                  Container(
+//                                    child: Container(
+//                                    decoration: new BoxDecoration(
+//                                      color: Colors.purple,
+//                                      gradient: new LinearGradient(
+//                                        colors: [Colors.white, Colors.white.withOpacity(0.0), Colors.white.withOpacity(0.0), Colors.white],
+//                                        stops: [0, .05, .95, 1],
+//                                      ),
+//                                    ),
+//                                    ),
+//                                  ),
                                 ],
                               ),
                             ),
