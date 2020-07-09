@@ -48,8 +48,9 @@ class _Body extends State<Body> {
 
   void topNavTapped(int i) {
     isPressed = true;
+    int ms = 500 + (50 * (selectedIndex.getIndex - i).abs());
     pageController.animateToPage(i,
-        duration: Duration(milliseconds: 500), curve: Curves.ease);
+        duration: Duration(milliseconds: ms), curve: Curves.fastOutSlowIn);
     selectedIndex.setIndex(i);
   }
 
