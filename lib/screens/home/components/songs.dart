@@ -293,9 +293,9 @@ class _SongList extends State<SongList> {
                                   ListView.builder(
                                     shrinkWrap: true,
                                     physics: NeverScrollableScrollPhysics(),
-                                    itemCount: featured(getAtIndex(i)).length,
+                                    itemCount: featured(getAtIndex(i)).length - 5,
                                     itemBuilder: (context, j) {
-                                      Music current = getAtIndex(i)[j];
+                                      Music current = getAtIndex(i)[j + 5];
                                       return Row(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
