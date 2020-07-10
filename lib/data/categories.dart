@@ -31,3 +31,14 @@ List<Music> featured(List<Music> list) {
   }
   return feat;
 }
+
+List<Music> getOtherAtIndex(int index) {
+  List<Music> l = getAtIndex(index);
+  List<Music> rl = new List();
+  for (int i = 5; i < l.length; i++) {
+    if (!l[i].getIsFeatured) {
+      rl.add(l[i]);
+    }
+  }
+  return rl;
+}

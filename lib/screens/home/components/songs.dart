@@ -214,7 +214,8 @@ class _SongList extends State<SongList> {
                               decoration: defaultDecoration,
                               child: Column(
                                 children: <Widget>[
-                                  ListView.builder(
+                                  ListView.separated(
+                                      separatorBuilder: (BuildContext context, int index) => divider,
                                       shrinkWrap: true,
                                       physics: NeverScrollableScrollPhysics(),
                                       itemCount: featured(getAtIndex(i)).length,
@@ -286,16 +287,18 @@ class _SongList extends State<SongList> {
                             width: MediaQuery.of(context).size.width,
                             color: Colors.transparent,
                             child: Container(
-                              padding: EdgeInsets.all(defaultPadding),
+                              padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 0.0),
                               decoration: defaultDecoration,
                               child: Column(
                                 children: <Widget>[
-                                  ListView.builder(
+                                  ListView.separated(
+                                    separatorBuilder: (BuildContext context, int index) => divider,
                                     shrinkWrap: true,
                                     physics: NeverScrollableScrollPhysics(),
-                                    itemCount: featured(getAtIndex(i)).length - 5,
+                                    itemCount: getOtherAtIndex(i).length,
                                     itemBuilder: (context, j) {
-                                      Music current = getAtIndex(i)[j + 5];
+                                      Music current = getOtherAtIndex(i)[j];
+//                                      print(current.getTitle);
                                       return Row(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
@@ -332,7 +335,7 @@ class _SongList extends State<SongList> {
                                                 ],
                                               ),
                                             ),
-                                          )
+                                          ),
                                         ],
                                       );
                                     },

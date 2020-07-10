@@ -25,3 +25,13 @@ final defaultDecoration = BoxDecoration(
     ),
   ],
 );
+
+final divider = Divider(
+  color: Colors.transparent,
+  height: defaultPadding,
+);
+
+final dividerFake = Divider(
+  color: Colors.transparent,
+  height: 0,
+);
