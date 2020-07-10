@@ -1,4 +1,6 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:soundselections/data/categories.dart';
 import '../../../data/music.dart';
@@ -110,6 +112,8 @@ class _SongList extends State<SongList> {
                                         ),
                                         itemCount: 5,
                                         itemBuilder: (context, index) {
+                                          List<Music> current = getAtIndex(i);
+                                          Music m = current[index];
                                           return Container(
                                             //margin: EdgeInsets.all(5.0),
                                             child: ClipRRect(
@@ -117,8 +121,7 @@ class _SongList extends State<SongList> {
                                                     Radius.circular(8.0)),
                                                 child: Stack(
                                                   children: <Widget>[
-                                                    Image.network(
-                                                        "https://upload.wikimedia.org/wikipedia/en/1/11/Chance10Day.jpeg"),
+                                                    Image.network(m.getAlbumImg),
                                                     Positioned(
                                                       bottom: 0.0,
                                                       left: 0.0,
@@ -134,6 +137,7 @@ class _SongList extends State<SongList> {
                                                               Color.fromARGB(
                                                                   0, 0, 0, 0)
                                                             ],
+                                                            stops: [.7, 1],
                                                             begin: Alignment
                                                                 .bottomCenter,
                                                             end: Alignment
@@ -145,14 +149,31 @@ class _SongList extends State<SongList> {
                                                                 vertical: 10.0,
                                                                 horizontal:
                                                                     20.0),
-                                                        child: Text(
-                                                          'No. $index image',
-                                                          style: TextStyle(
-                                                            color: Colors.white,
-                                                            fontSize: 20.0,
-                                                            fontWeight:
+                                                        child: Column(
+                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                          children: <Widget>[
+                                                            //two separate ones
+                                                            AutoSizeText(
+                                                              m.getTitle,
+                                                              style: TextStyle(
+                                                                color: Colors.white,
+                                                                fontSize: 20.0,
+                                                                fontWeight:
                                                                 FontWeight.bold,
-                                                          ),
+                                                              ),
+                                                              maxLines: 1,
+                                                            ),
+                                                            AutoSizeText(
+                                                              m.getArtist,
+                                                              style: TextStyle(
+                                                                color: Colors.white,
+                                                                fontSize: 20.0,
+                                                                fontWeight:
+                                                                FontWeight.bold,
+                                                              ),
+                                                              maxLines: 1,
+                                                            ),
+                                                          ],
                                                         ),
                                                       ),
                                                     ),

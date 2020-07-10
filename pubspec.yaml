@@ -37,6 +37,8 @@ dependencies:
 
   scrollable_positioned_list: ^0.1.6 #for the top nav to scroll with page changes
 
+  auto_size_text: ^2.1.0 #for the text in the carousel, among other places
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
