@@ -1,7 +1,7 @@
 import 'music.dart';
 
-List<String> categories = ["New Finds", "Top Songs", "Completely Underground", "New Hip-Hop/R&B", "New Electronic", "Classics", "Old Beats", "Never Gets Old"];
-List<String> genres = ["chill", "rap", "electronic", "instrumental", "ballad", "classic", "indie", "none"];
+List<String> categories = ["Top Songs", "Completely Underground", "New Hip-Hop/R&B", "New Electronic", "Classics", "Old Beats", "Never Gets Old"];
+List<String> genres = ["chill", "rap", "electronic", "instrumental", "ballad", "classic", "indie", "none", "experimental", "r&b"];
 List<List<Music>> sortedCategories = new List(categories.length);
 
 void populateAll() {

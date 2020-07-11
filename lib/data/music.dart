@@ -69,7 +69,7 @@ List<Music> songs = [
     features: null,
     writers: null,
     producers: null,
-    genres: ["Hip-Hop", "R&B", "Rap"],
+    genres: ["rap", "r&b"],
     isFeatured: true,
   ),
   //I Wanna Get Better: 1

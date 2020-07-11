@@ -156,7 +156,7 @@ class _SongList extends State<SongList> {
                                                             AutoSizeText(
                                                               m.getTitle,
                                                               style: TextStyle(
-                                                                color: Colors.white,
+                                                                color: thirdColor,
                                                                 fontSize: 20.0,
                                                                 fontWeight:
                                                                 FontWeight.bold,
@@ -166,8 +166,9 @@ class _SongList extends State<SongList> {
                                                             AutoSizeText(
                                                               m.getArtist,
                                                               style: TextStyle(
-                                                                color: Colors.white,
-                                                                fontSize: 20.0,
+                                                                //color: Colors.grey[400],
+                                                                color: thirdColor.withAlpha(200),
+                                                                fontSize: 16.0,
                                                                 fontWeight:
                                                                 FontWeight.bold,
                                                               ),
@@ -287,7 +288,7 @@ class _SongList extends State<SongList> {
                             width: MediaQuery.of(context).size.width,
                             color: Colors.transparent,
                             child: Container(
-                              padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 0.0),
+                              padding: EdgeInsets.all(defaultPadding),
                               decoration: defaultDecoration,
                               child: Column(
                                 children: <Widget>[
@@ -298,7 +299,6 @@ class _SongList extends State<SongList> {
                                     itemCount: getOtherAtIndex(i).length,
                                     itemBuilder: (context, j) {
                                       Music current = getOtherAtIndex(i)[j];
-//                                      print(current.getTitle);
                                       return Row(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
