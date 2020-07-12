@@ -62,7 +62,7 @@ class _SongList extends State<SongList> {
                           Align(
                             alignment: Alignment.topLeft,
                             child: Text(
-                              "New Picks",
+                              "Recently Added",
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 20,
@@ -121,7 +121,10 @@ class _SongList extends State<SongList> {
                                                     Radius.circular(8.0)),
                                                 child: Stack(
                                                   children: <Widget>[
-                                                    Image.network(m.getAlbumImg),
+                                                    Image.asset(
+                                                        "assets/images/" +
+                                                            m.getAlbumImg),
+                                                    //Image.network(m.getAlbumImg),
                                                     Positioned(
                                                       bottom: 0.0,
                                                       left: 0.0,
@@ -150,16 +153,20 @@ class _SongList extends State<SongList> {
                                                                 horizontal:
                                                                     20.0),
                                                         child: Column(
-                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
                                                           children: <Widget>[
                                                             //two separate ones
                                                             AutoSizeText(
                                                               m.getTitle,
                                                               style: TextStyle(
-                                                                color: thirdColor,
+                                                                color:
+                                                                    thirdColor,
                                                                 fontSize: 20.0,
                                                                 fontWeight:
-                                                                FontWeight.bold,
+                                                                    FontWeight
+                                                                        .bold,
                                                               ),
                                                               maxLines: 1,
                                                             ),
@@ -167,10 +174,13 @@ class _SongList extends State<SongList> {
                                                               m.getArtist,
                                                               style: TextStyle(
                                                                 //color: Colors.grey[400],
-                                                                color: thirdColor.withAlpha(200),
+                                                                color: thirdColor
+                                                                    .withAlpha(
+                                                                        200),
                                                                 fontSize: 16.0,
                                                                 fontWeight:
-                                                                FontWeight.bold,
+                                                                    FontWeight
+                                                                        .bold,
                                                               ),
                                                               maxLines: 1,
                                                             ),
@@ -216,7 +226,9 @@ class _SongList extends State<SongList> {
                               child: Column(
                                 children: <Widget>[
                                   ListView.separated(
-                                      separatorBuilder: (BuildContext context, int index) => divider,
+                                      separatorBuilder:
+                                          (BuildContext context, int index) =>
+                                              divider,
                                       shrinkWrap: true,
                                       physics: NeverScrollableScrollPhysics(),
                                       itemCount: featured(getAtIndex(i)).length,
@@ -229,8 +241,9 @@ class _SongList extends State<SongList> {
                                             ClipRRect(
                                               borderRadius: BorderRadius.all(
                                                   Radius.circular(4.0)),
-                                              child: Image.network(
-                                                current.getAlbumImg,
+                                              child: Image.asset(
+                                                "assets/images/" +
+                                                    current.getAlbumImg,
                                                 width: 120,
                                                 height: 120,
                                               ),
@@ -293,7 +306,9 @@ class _SongList extends State<SongList> {
                               child: Column(
                                 children: <Widget>[
                                   ListView.separated(
-                                    separatorBuilder: (BuildContext context, int index) => divider,
+                                    separatorBuilder:
+                                        (BuildContext context, int index) =>
+                                            divider,
                                     shrinkWrap: true,
                                     physics: NeverScrollableScrollPhysics(),
                                     itemCount: getOtherAtIndex(i).length,
@@ -306,8 +321,9 @@ class _SongList extends State<SongList> {
                                           ClipRRect(
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(4.0)),
-                                            child: Image.network(
-                                              current.getAlbumImg,
+                                            child: Image.asset(
+                                              "assets/images/" +
+                                                  current.getAlbumImg,
                                               width: 90,
                                               height: 90,
                                             ),
