@@ -114,7 +114,10 @@ class _SongList extends State<SongList> {
                                         itemBuilder: (context, index) {
                                           List<Music> current = getAtIndex(i);
                                           Music m = current[index];
-                                          return Container(
+                                          return GestureDetector(
+                                            onTap: () {
+                                              //TODO nav
+                                            },
                                             //margin: EdgeInsets.all(5.0),
                                             child: ClipRRect(
                                                 borderRadius: BorderRadius.all(
@@ -193,7 +196,6 @@ class _SongList extends State<SongList> {
                                           );
                                         },
                                       ),
-                                      //TODO in this container, show the latest 5 songs
                                     ),
                                   ),
                                 ],
@@ -234,45 +236,59 @@ class _SongList extends State<SongList> {
                                       itemCount: featured(getAtIndex(i)).length,
                                       itemBuilder: (context, j) {
                                         Music current = getAtIndex(i)[j];
-                                        return Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: <Widget>[
-                                            ClipRRect(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(4.0)),
-                                              child: Image.asset(
-                                                "assets/images/" +
-                                                    current.getAlbumImg,
-                                                width: 120,
-                                                height: 120,
-                                              ),
-                                            ),
-                                            Padding(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: 8.0)),
-                                            Container(
-                                              child: Align(
-                                                alignment: Alignment.topLeft,
-                                                child: Column(
-                                                  children: <Widget>[
-                                                    Text(
-                                                      current.getTitle +
-                                                          "\n" +
-                                                          current.getArtist +
-                                                          "\n" +
-                                                          current.getAlbum,
-                                                      style: TextStyle(
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                    ),
-                                                  ],
+                                        return FlatButton(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(4.0),
+                                          ),
+                                          splashColor:
+                                              thirdColor.withAlpha(800),
+                                          highlightColor:
+                                              thirdColor.withAlpha(600),
+                                          padding: EdgeInsets.all(0.0),
+                                          onPressed: () {
+                                            //TODO nav
+                                          },
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: <Widget>[
+                                              ClipRRect(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(4.0)),
+                                                child: Image.asset(
+                                                  "assets/images/" +
+                                                      current.getAlbumImg,
+                                                  width: 120,
+                                                  height: 120,
                                                 ),
                                               ),
-                                            )
-                                          ],
+                                              Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 8.0)),
+                                              Container(
+                                                child: Align(
+                                                  alignment: Alignment.topLeft,
+                                                  child: Column(
+                                                    children: <Widget>[
+                                                      Text(
+                                                        current.getTitle +
+                                                            "\n" +
+                                                            current.getArtist +
+                                                            "\n" +
+                                                            current.getAlbum,
+                                                        style: TextStyle(
+                                                          fontSize: 16,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         );
                                       })
                                 ],
@@ -314,45 +330,58 @@ class _SongList extends State<SongList> {
                                     itemCount: getOtherAtIndex(i).length,
                                     itemBuilder: (context, j) {
                                       Music current = getOtherAtIndex(i)[j];
-                                      return Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: <Widget>[
-                                          ClipRRect(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(4.0)),
-                                            child: Image.asset(
-                                              "assets/images/" +
-                                                  current.getAlbumImg,
-                                              width: 90,
-                                              height: 90,
-                                            ),
-                                          ),
-                                          Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: 8.0)),
-                                          Container(
-                                            child: Align(
-                                              alignment: Alignment.topLeft,
-                                              child: Column(
-                                                children: <Widget>[
-                                                  Text(
-                                                    current.getTitle +
-                                                        "\n" +
-                                                        current.getArtist +
-                                                        "\n" +
-                                                        current.getAlbum,
-                                                    style: TextStyle(
-                                                      fontSize: 14,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
-                                                  ),
-                                                ],
+                                      return FlatButton(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(4.0),
+                                        ),
+                                        splashColor: thirdColor.withAlpha(800),
+                                        highlightColor:
+                                            thirdColor.withAlpha(600),
+                                        padding: EdgeInsets.all(0.0),
+                                        onPressed: () {
+                                          //TODO nav
+                                        },
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: <Widget>[
+                                            ClipRRect(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(4.0)),
+                                              child: Image.asset(
+                                                "assets/images/" +
+                                                    current.getAlbumImg,
+                                                width: 90,
+                                                height: 90,
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                            Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 8.0)),
+                                            Container(
+                                              child: Align(
+                                                alignment: Alignment.topLeft,
+                                                child: Column(
+                                                  children: <Widget>[
+                                                    Text(
+                                                      current.getTitle +
+                                                          "\n" +
+                                                          current.getArtist +
+                                                          "\n" +
+                                                          current.getAlbum,
+                                                      style: TextStyle(
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       );
                                     },
                                   ),
