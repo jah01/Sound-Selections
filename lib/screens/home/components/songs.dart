@@ -3,8 +3,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:soundselections/data/categories.dart';
+import 'package:soundselections/screens/details/details_screen.dart';
 import '../../../data/music.dart';
 import '../../../defaults.dart';
+import '../../details/details_screen.dart';
 
 class SongList extends StatefulWidget {
   final scroll;
@@ -116,6 +118,7 @@ class _SongList extends State<SongList> {
                                           Music m = current[index];
                                           return GestureDetector(
                                             onTap: () {
+                                              Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) { return new DetailsScreen(m);}));
                                               //TODO nav
                                             },
                                             //margin: EdgeInsets.all(5.0),
