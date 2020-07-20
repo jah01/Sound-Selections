@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:soundselections/screens/home/home_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(home: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

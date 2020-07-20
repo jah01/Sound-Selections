@@ -114,11 +114,15 @@ class _SongList extends State<SongList> {
                                         ),
                                         itemCount: 5,
                                         itemBuilder: (context, index) {
+                                          Key k = UniqueKey();
                                           List<Music> current = getAtIndex(i);
                                           Music m = current[index];
                                           return GestureDetector(
                                             onTap: () {
-                                              Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) { return new DetailsScreen(m);}));
+                                              //Navigator.pushNamed(context, "/details");
+//                                              Navigator.of(context).push(DetailsScreen(m, k));
+//                                              Navigator.push(context, DetailsScreen(m, k));
+                                              Navigator.push(context, MaterialPageRoute(builder: (context) => DetailsScreen(m, k)));
                                               //TODO nav
                                             },
                                             //margin: EdgeInsets.all(5.0),
@@ -127,9 +131,12 @@ class _SongList extends State<SongList> {
                                                     Radius.circular(8.0)),
                                                 child: Stack(
                                                   children: <Widget>[
-                                                    Image.asset(
-                                                        "assets/images/" +
-                                                            m.getAlbumImg),
+                                                    Hero(
+                                                      tag: k,
+                                                      child: Image.asset(
+                                                          "assets/images/" +
+                                                              m.getAlbumImg),
+                                                    ),
                                                     //Image.network(m.getAlbumImg),
                                                     Positioned(
                                                       bottom: 0.0,
