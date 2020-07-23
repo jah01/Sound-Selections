@@ -58,6 +58,39 @@ class Music {
     return this.description;
   }
 
+  List<String> get getFeatures {
+    return this.features;
+  }
+
+  List<String> get getWriters {
+    return this.writers;
+  }
+
+  List<String> get getProducers {
+    return this.producers;
+  }
+
+  Map<String, String> getPeople() {
+    Map<String, String> map = new Map();
+    map.addAll({this.artist : "Artist"});
+    if (this.features != null) {
+      for (String element in this.features) {
+        map.addAll({element : "Featured"});
+      }
+    }
+    if (this.writers != null) {
+      for (String element in this.writers) {
+        map.addAll({element : "Writer"});
+      }
+    }
+    if (this.producers != null) {
+      for (String element in this.producers) {
+        map.addAll({element : "Producer"});
+      }
+    }
+    return map;
+  }
+
 }
 
 List<Music> songs = [

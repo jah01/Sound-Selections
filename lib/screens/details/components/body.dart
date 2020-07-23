@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:soundselections/defaults.dart';
 import '../../details/details_screen.dart';
@@ -25,6 +26,7 @@ class Body extends StatelessWidget {
   //const Body({Key key, this.song}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    Map<String, String> people = song.getPeople();
     return Hero(tag: k, flightShuttleBuilder: _flightShuttleBuilder, transitionOnUserGestures: true, child:Container(
       color: Colors.white,
       child: Stack(
@@ -89,9 +91,46 @@ class Body extends StatelessWidget {
               ),
               Container(
                 color: Colors.white,
+                alignment: Alignment.topLeft,
+                padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 6.0),
+                child: Text("Review", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
+              ),
+              Container(
+                color: Colors.white,
+                padding: EdgeInsets.symmetric(horizontal: defaultPadding * 2),
+                alignment: Alignment.topLeft,
+                child: Text(song.getDesc, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.grey[400]), textAlign: TextAlign.justify,),
+              ),
+              Container(
+                color: Colors.white,
+                alignment: Alignment.topLeft,
+                padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 6.0),
+                child: Text("People", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
+              ),
+              Container(
+                color: Colors.white,
+                height: 500,
                 padding: EdgeInsets.all(defaultPadding),
                 alignment: Alignment.topLeft,
-                child: Text(song.getDesc, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.grey[400]),),
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: people.length,
+                  itemBuilder: (context, index) {
+                    //print("ARTIST----------------------------------- " + people.keys.elementAt(index).toString());
+                    return Container(
+                      padding: EdgeInsets.only(right: defaultPadding),
+                      width: 80,
+                      child: Column(
+                        children: <Widget>[
+                          Container(
+                            //decoration: BoxDecoration(shape: BoxShape.circle),
+                            color: Colors.grey,
+                          )
+                        ],
+                      ),
+                    );
+                  },
+                ),
               ),
             ],
           ),
