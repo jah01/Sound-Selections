@@ -94,6 +94,43 @@ class Body extends StatelessWidget {
                 color: Colors.white,
                 alignment: Alignment.topLeft,
                 padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 6.0),
+                child: Text("Genres", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
+              ),
+              //Container(color: Colors.white, padding: EdgeInsets.only(top: defaultPadding),),
+              Container(
+                height: 32,
+                color: Colors.white,
+                //color: Colors.grey,
+                padding: EdgeInsets.only(right: defaultPadding, left: defaultPadding),
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  separatorBuilder: (BuildContext context, int index) => dividerVerticalSmall,
+                  itemCount: song.getGenres.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        height: 32,
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.only(left: defaultPadding),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: defaultPadding,
+                          vertical: 0,
+                        ),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey[600], width: 2),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Text(
+                          song.getGenres[index],
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.grey[600]), textAlign: TextAlign.justify,
+                        ),
+                      );
+                    }
+                ),
+              ),
+              Container(
+                color: Colors.white,
+                alignment: Alignment.topLeft,
+                padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 6.0),
                 child: Text("Review", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
               ),
               Container(
@@ -155,6 +192,16 @@ class Body extends StatelessWidget {
                   },
                 ),
               ),
+              Container(
+                color: Colors.white,
+                alignment: Alignment.topLeft,
+                padding: EdgeInsets.fromLTRB(defaultPadding, 0.0, defaultPadding, 6.0),
+                child: Text("Additional Information", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
+              ),
+              Text("Label: ${song.getLabel}", style: TextStyle(fontSize: 16, color: Colors.grey[600], fontWeight: FontWeight.w600),),
+              Text("Artist Image Copyright: ${song.getArtistC}", style: TextStyle(fontSize: 16, color: Colors.grey[600], fontWeight: FontWeight.w600),),
+              Text("Album Image Copyright: ${song.getAlbumC}", style: TextStyle(fontSize: 16, color: Colors.grey[600], fontWeight: FontWeight.w600),),
+//              Padding(padding: EdgeInsets.only(bottom: 6.0),),
             ],
           ),
           ),

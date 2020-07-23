@@ -95,6 +95,22 @@ class Music {
     return map;
   }
 
+  List<String> get getGenres {
+    return this.genres;
+  }
+
+  String get getLabel {
+    return this.label;
+  }
+
+  String get getArtistC {
+    return this.artistC;
+  }
+
+  String get getAlbumC {
+    return this.albumC;
+  }
+
 }
 
 List<Music> songs = [
@@ -126,7 +142,7 @@ List<Music> songs = [
     album: "Strange Desire",
     label: "RCA Records",
     release: DateTime(2014, 2, 18),
-    description: "N/A",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc faucibus a pellentesque sit amet porttitor eget. Consectetur a erat nam at lectus urna duis convallis convallis.",
     artistImg: "bleachers.png",
     artistC: "By Katie Fricker - Jack Antonoff, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=57757654",
     albumImg: "StrangeDesire.jpg",

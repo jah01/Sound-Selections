@@ -40,3 +40,8 @@ final dividerVertical = VerticalDivider(
   color: Colors.transparent,
   width: defaultPadding * 1.5,
 );
+
+final dividerVerticalSmall = VerticalDivider(
+  color: Colors.transparent,
+  width: defaultPadding,
+);
