@@ -38,5 +38,5 @@ final dividerFake = Divider(
 
 final dividerVertical = VerticalDivider(
   color: Colors.transparent,
-  width: defaultPadding,
+  width: defaultPadding * 1.5,
 );

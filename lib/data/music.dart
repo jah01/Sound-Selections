@@ -34,6 +34,10 @@ class Music {
     return this.albumImg;
   }
 
+  String get getArtistImg {
+    return this.artistImg;
+  }
+
   String get getTitle {
     return this.title;
   }
@@ -73,17 +77,17 @@ class Music {
   Map<String, String> getPeople() {
     Map<String, String> map = new Map();
     map.addAll({this.artist : "Artist"});
-    if (this.features != null) {
+    if (this.features.length > 0) {
       for (String element in this.features) {
         map.addAll({element : "Featured"});
       }
     }
-    if (this.writers != null) {
+    if (this.writers.length > 0) {
       for (String element in this.writers) {
         map.addAll({element : "Writer"});
       }
     }
-    if (this.producers != null) {
+    if (this.producers.length > 0) {
       for (String element in this.producers) {
         map.addAll({element : "Producer"});
       }
@@ -109,9 +113,9 @@ List<Music> songs = [
     albumImg: "10DayTape.jpeg",
     albumC: "Fair use: https://en.wikipedia.org/w/index.php?curid=50047311",
     category: "Old Beats",
-    features: null,
-    writers: null,
-    producers: null,
+    features: [],
+    writers: [],
+    producers: [],
     genres: ["rap", "r&b"],
     isFeatured: true,
   ),
@@ -128,9 +132,9 @@ List<Music> songs = [
     albumImg: "StrangeDesire.jpg",
     albumC: "Fair use",
     category: "Never Gets Old",
-    features: null,
-    writers: null,
-    producers: null,
+    features: [],
+    writers: [],
+    producers: [],
     genres: ["Hip-Hop", "R&B", "Rap"],
     isFeatured: true,
   ),

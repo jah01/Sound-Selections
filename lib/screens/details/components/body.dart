@@ -77,6 +77,7 @@ class Body extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(song.getTitle, style: TextStyle(fontSize: 24, color: Colors.grey[800], fontWeight: FontWeight.w600),),
+                    //Text(song.getTitle, style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
                     Wrap(
                       children: <Widget>[
                         Text("by ${song.getArtist}", style: TextStyle(fontSize: 16, color: Colors.grey[600], fontWeight: FontWeight.w600),),
@@ -108,7 +109,7 @@ class Body extends StatelessWidget {
                 child: Text("People", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
               ),
               Container(
-                height: 160,
+                height: 175,
                 color: Colors.white,
                 padding: EdgeInsets.all(defaultPadding),
                 alignment: Alignment.topLeft,
@@ -118,6 +119,7 @@ class Body extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: people.length,
                   itemBuilder: (context, index) {
+                    bool isArtist = index == 0;
                     //print("ARTIST----------------------------------- " + people.keys.elementAt(index).toString());
                     return Container(
                       //padding: EdgeInsets.only(right: defaultPadding),
@@ -128,10 +130,25 @@ class Body extends StatelessWidget {
                             height: 80,
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                image: DecorationImage(image: AssetImage("assets/images/" + song.getAlbumImg), fit: BoxFit.fill),
+                                image: isArtist ? DecorationImage(image: AssetImage("assets/images/" + song.getArtistImg), fit: BoxFit.fill) : DecorationImage(image: AssetImage("assets/images/empty.png"), fit: BoxFit.fill),
                             ),
+
                             //color: Colors.grey,
-                          )
+                          ),
+                          Container(height: 10, color: Colors.white,),
+                          Text(
+                            people.keys.elementAt(index),
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 14, color: Colors.grey[600], fontWeight: FontWeight.w600),
+                            maxLines: 2,
+                          ),
+                          Container(height: 5, color: Colors.white,),
+                          Text(
+                            people.values.elementAt(index),
+                            maxLines: 1,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 14, color: Colors.grey[400], fontWeight: FontWeight.w600),
+                          ),
                         ],
                       ),
                     );
