@@ -108,23 +108,29 @@ class Body extends StatelessWidget {
                 child: Text("People", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
               ),
               Container(
+                height: 160,
                 color: Colors.white,
-                height: 500,
                 padding: EdgeInsets.all(defaultPadding),
                 alignment: Alignment.topLeft,
-                child: ListView.builder(
+                child: ListView.separated(
+                  separatorBuilder:
+                      (BuildContext context, int index) => dividerVertical,
                   scrollDirection: Axis.horizontal,
                   itemCount: people.length,
                   itemBuilder: (context, index) {
                     //print("ARTIST----------------------------------- " + people.keys.elementAt(index).toString());
                     return Container(
-                      padding: EdgeInsets.only(right: defaultPadding),
+                      //padding: EdgeInsets.only(right: defaultPadding),
                       width: 80,
                       child: Column(
                         children: <Widget>[
                           Container(
-                            //decoration: BoxDecoration(shape: BoxShape.circle),
-                            color: Colors.grey,
+                            height: 80,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(image: AssetImage("assets/images/" + song.getAlbumImg), fit: BoxFit.fill),
+                            ),
+                            //color: Colors.grey,
                           )
                         ],
                       ),
