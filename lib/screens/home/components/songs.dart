@@ -246,7 +246,8 @@ class _SongList extends State<SongList> {
                                       itemCount: featured(getAtIndex(i)).length,
                                       itemBuilder: (context, j) {
                                         Music current = getAtIndex(i)[j];
-                                        return FlatButton(
+                                        Key k = UniqueKey();
+                                        return Hero(tag: k, child: FlatButton(
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(4.0),
@@ -257,6 +258,7 @@ class _SongList extends State<SongList> {
                                               thirdColor.withAlpha(600),
                                           padding: EdgeInsets.all(0.0),
                                           onPressed: () {
+                                            Navigator.push(context, MaterialPageRoute(builder: (context) => DetailsScreen(current, k)));
                                             //TODO nav
                                           },
                                           child: Row(
@@ -299,7 +301,7 @@ class _SongList extends State<SongList> {
                                               )
                                             ],
                                           ),
-                                        );
+                                        ),);
                                       })
                                 ],
                               ),
@@ -340,7 +342,8 @@ class _SongList extends State<SongList> {
                                     itemCount: getOtherAtIndex(i).length,
                                     itemBuilder: (context, j) {
                                       Music current = getOtherAtIndex(i)[j];
-                                      return FlatButton(
+                                      Key k = UniqueKey();
+                                      return Hero(key: k, child: FlatButton(
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(4.0),
@@ -350,6 +353,7 @@ class _SongList extends State<SongList> {
                                             thirdColor.withAlpha(600),
                                         padding: EdgeInsets.all(0.0),
                                         onPressed: () {
+                                          Navigator.push(context, MaterialPageRoute(builder: (context) => DetailsScreen(current, k)));
                                           //TODO nav
                                         },
                                         child: Row(
@@ -392,7 +396,7 @@ class _SongList extends State<SongList> {
                                             ),
                                           ],
                                         ),
-                                      );
+                                      ),);
                                     },
                                   ),
                                 ],

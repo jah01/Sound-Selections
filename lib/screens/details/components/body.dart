@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:soundselections/defaults.dart';
-import '../../details/details_screen.dart';
 import '../../../data/music.dart';
 
 Widget _flightShuttleBuilder(
@@ -198,9 +197,31 @@ class Body extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(defaultPadding, 0.0, defaultPadding, 6.0),
                 child: Text("Additional Information", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
               ),
-              Text("Label: ${song.getLabel}", style: TextStyle(fontSize: 16, color: Colors.grey[600], fontWeight: FontWeight.w600),),
-              Text("Artist Image Copyright: ${song.getArtistC}", style: TextStyle(fontSize: 16, color: Colors.grey[600], fontWeight: FontWeight.w600),),
-              Text("Album Image Copyright: ${song.getAlbumC}", style: TextStyle(fontSize: 16, color: Colors.grey[600], fontWeight: FontWeight.w600),),
+              Container(
+                color: Colors.white,
+                padding: EdgeInsets.symmetric(horizontal: defaultPadding * 2),
+                child: RichText(
+                  textAlign: TextAlign.left,
+                  text: TextSpan(
+                    text: "Label: ",
+                    style: TextStyle(fontSize: 12, color: Colors.grey[600], fontWeight: FontWeight.w600),
+                    children: <TextSpan>[
+                      TextSpan(text: "${song.getLabel}\n", style: TextStyle(color: Colors.grey[400])),
+                      TextSpan(text: "Artist Image Copyright: ",
+                      children: <TextSpan>[
+                        TextSpan(text: "${song.getArtistC}\n", style: TextStyle(color: Colors.grey[400])),
+                        TextSpan(text: "Album Image Copyright: ",
+                          children: <TextSpan>[
+                            TextSpan(text: "${song.getAlbumC}", style: TextStyle(color: Colors.grey[400])),
+                          ],
+                        ),
+                      ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+Padding(padding: EdgeInsets.only(bottom: defaultPadding),),
 //              Padding(padding: EdgeInsets.only(bottom: 6.0),),
             ],
           ),

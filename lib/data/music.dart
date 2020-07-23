@@ -1,6 +1,3 @@
-import 'package:flutter/cupertino.dart';
-import 'categories.dart';
-
 class Music {
   final String title, artist, album, label, description, artistImg, artistC, albumImg, albumC, category;
   final DateTime release;
