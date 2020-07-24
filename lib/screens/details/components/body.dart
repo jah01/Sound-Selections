@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:soundselections/defaults.dart';
 import '../../../data/music.dart';
 
@@ -152,11 +153,12 @@ class Body extends StatelessWidget {
                       child: Text("People", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
                     ),
                     Container(
-                      height: 175,
+                      height: 165,
                       color: Colors.white,
                       margin: EdgeInsets.symmetric(horizontal: defaultPadding * 2),
                       alignment: Alignment.topLeft,
                      child: ListView.separated(
+                       shrinkWrap: true,
                        separatorBuilder: (BuildContext context, int index) => dividerVertical,
                        scrollDirection: Axis.horizontal,
                        itemCount: people.length,
@@ -165,6 +167,7 @@ class Body extends StatelessWidget {
                          //bool isArtist = index == 0;
                          //print("ARTIST----------------------------------- " + people.keys.elementAt(index).toString());
                          return Container(
+                           color: Colors.white,
                            //margin: EdgeInsets.only(right: defaultPadding),
                            width: 80,
                            child: Column(
