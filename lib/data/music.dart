@@ -80,7 +80,7 @@ class Music {
 
   List<List<String>> getPeople() {
     List<List<String>> list = new List();
-    list.addAll(this.people);
+      list.addAll(this.people);
     list.insert(0, [this.artist, "Artist", this.artistImg, this.artistC]);
     return list;
   }
@@ -97,24 +97,6 @@ class Music {
         }
       }
     }
-
-
-
-
-
-
-    // for (int i = 0; i < people.length; i++) {
-    //   if (people[i][3] != null) {
-    //     List<String> vals = map.values.toList();
-    //     for (int j = 0; j < vals.length; j++) {
-    //       print("VALS: " + vals[j]);
-    //       if (people[i][2].compareTo(vals[j]) == 0) {
-    //         people[i][3] = "Same as " + people[j][3];
-    //       }
-    //     }
-    //     map.addAll({people[i][1] + ": " : people[i][3]});
-    //   }
-    // }
     return map;
   }
 
@@ -136,7 +118,7 @@ List<Music> songs = [
     albumImg: "10DayTape.jpeg",
     albumC: "Fair use: https://en.wikipedia.org/w/index.php?curid=50047311",
     category: "Old Beats",
-    people: [["test", "Writer", "empty.png", null], ["Chance the Rapper", "Music Stuff", "chance.png", "ok"]],
+    people: [["Brenda Russell", "Sampled", "empty.png", null]],
     genres: ["rap", "r&b"],
     isFeatured: true,
   ),
@@ -153,7 +135,7 @@ List<Music> songs = [
     albumImg: "StrangeDesire.jpg",
     albumC: "Fair use",
     category: "Never Gets Old",
-    people: [[]],
+    people: [],
     genres: ["indie", "electronic", "energetic"],
     isFeatured: true,
   ),
