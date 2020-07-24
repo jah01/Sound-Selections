@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -192,11 +193,11 @@ class Body extends StatelessWidget {
                                  maxLines: 2,
                                ),
                                Container(height: 5, color: Colors.white,),
-                               Text(
+                               AutoSizeText(
                                  people[index][1],
                                  //people.values.elementAt(index),
                                  //TODO people
-                                 maxLines: 1,
+                                 maxLines: 2,
                                  textAlign: TextAlign.center,
                                  style: TextStyle(fontSize: 14, color: Colors.grey[400], fontWeight: FontWeight.w600),
                                ),
@@ -213,6 +214,7 @@ class Body extends StatelessWidget {
                       child: Text("Additional Information", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
                     ),
                     Container(
+                      alignment: Alignment.topLeft,
                       color: Colors.white,
                       padding: EdgeInsets.symmetric(horizontal: defaultPadding * 2),
                       child: Column(

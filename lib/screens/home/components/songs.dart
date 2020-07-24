@@ -156,7 +156,7 @@ class _SongList extends State<SongList> {
                                                               Color.fromARGB(
                                                                   0, 0, 0, 0)
                                                             ],
-                                                            stops: [.7, 1],
+                                                            stops: [.4, 1],
                                                             begin: Alignment
                                                                 .bottomCenter,
                                                             end: Alignment
