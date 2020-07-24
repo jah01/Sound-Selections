@@ -1,3 +1,7 @@
+import 'package:intl/intl.dart';
+
+DateFormat dateFormat = DateFormat("MMMM d, yyyy");
+
 class Music {
   final String title, artist, album, label, description, artistImg, artistC, albumImg, albumC, category;
   final DateTime release;
@@ -88,7 +92,7 @@ class Music {
 
   Map<String, String> getCredits() {
     Map<String, String> map = new Map();
-    map.addAll({"Label: " : this.label, "Album: " : this.albumC});
+    map.addAll({"Label: " : this.label, "Release Date: " : dateFormat.format(this.release), "Album: " : this.albumC});
     List<List<String>> people = this.getPeople();
     for (int i = 0; i < people.length; i++) {
       if (people[i][2] != "empty.png") {
@@ -110,16 +114,16 @@ List<Music> songs = [
     album: "10 Day",
     label: "N/A",
     release: DateTime(2012, 4, 3),
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc faucibus a pellentesque sit amet porttitor eget. Consectetur a erat nam at lectus urna duis convallis convallis. Sed vulputate mi sit amet mauris commodo quis imperdiet massa. Sed risus pretium quam vulputate dignissim suspendisse in est. In fermentum et sollicitudin ac orci phasellus egestas. Amet nulla facilisi morbi tempus iaculis urna id volutpat lacus. Nunc sed id semper risus in hendrerit gravida rutrum quisque. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at. Sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit. Arcu non sodales neque sodales ut. Tristique sollicitudin nibh sit amet commodo nulla facilisi nullam. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus semper. Massa id neque aliquam vestibulum morbi blandit cursus risus. Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien. Rutrum quisque non tellus orci. Lacus suspendisse faucibus interdum posuere lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc faucibus a pellentesque sit amet porttitor eget. Consectetur a erat nam at lectus urna duis convallis convallis. Sed vulputate mi sit amet mauris commodo quis imperdiet massa. Sed risus pretium quam vulputate dignissim suspendisse in est. In fermentum et sollicitudin ac orci phasellus egestas. Amet nulla facilisi morbi tempus iaculis urna id volutpat lacus. Nunc sed id semper risus in hendrerit gravida rutrum quisque. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at. Sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit. Arcu non sodales neque sodales ut. Tristique sollicitudin nibh sit amet commodo nulla facilisi nullam. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus semper. Massa id neque aliquam vestibulum morbi blandit cursus risus. Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien. Rutrum quisque non tellus orci. Lacus suspendisse faucibus interdum posuere lorem ipsum dolor sit amet.",
+    description: "Chance the Rapper's first tape, 10 Day, includes a light tune about a night he admits he never experienced. Sampling Brenda Russell's \"So Good, So Right\" (1979), Chance raps about graduation, growing up, and of course, prom night. At the end of the song, he pulls the rug from under your feet, and the beautiful methaphores of royalty and the Grammys disappear as he explains he missed prom, and adds that he would do it again if given the chance. This is one of my favorite Chance songs not only because the melody favors Russell's piano over the all-too-common bass in raps, but also because of the unique echo-y lines that give the first verse some energy to set the stage for a memorable song.",
     //artistImg: "https://upload.wikimedia.org/wikipedia/commons/0/03/Chance_the_Rapper_2018_February.png",
     artistImg: "chance.png",
     artistC: "FOX Sports: https://www.youtube.com/watch?v=YT86shZnD38, CC BY 3.0, https://commons.wikimedia.org/w/index.php?curid=72191644",
     //albumImg: "https://upload.wikimedia.org/wikipedia/en/1/11/Chance10Day.jpeg",
     albumImg: "10DayTape.jpeg",
     albumC: "Fair use: https://en.wikipedia.org/w/index.php?curid=50047311",
-    category: "Old Beats",
+    category: "Summer 2020",
     people: [["Brenda Russell", "Sampled", "empty.png", null]],
-    genres: ["rap", "r&b"],
+    genres: ["rap", "sampling"],
     isFeatured: true,
   ),
   //I Wanna Get Better: 1
@@ -134,10 +138,26 @@ List<Music> songs = [
     artistC: "By Katie Fricker - Jack Antonoff, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=57757654",
     albumImg: "StrangeDesire.jpg",
     albumC: "Fair use",
-    category: "Never Gets Old",
+    category: "April 2020",
     people: [],
-    genres: ["indie", "electronic", "energetic"],
+    genres: ["energetic", "electronic", "piano"],
     isFeatured: true,
   ),
   //Crash My Car: 2
+  Music(
+    title: "Crash My Car",
+    artist: "COIN",
+    album: "Strange Desire",
+    label: "RCA Records",
+    release: DateTime(2014, 2, 18),
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc faucibus a pellentesque sit amet porttitor eget. Consectetur a erat nam at lectus urna duis convallis convallis.",
+    artistImg: "bleachers.png",
+    artistC: "By Katie Fricker - Jack Antonoff, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=57757654",
+    albumImg: "StrangeDesire.jpg",
+    albumC: "Fair use",
+    category: "April 2020",
+    people: [],
+    genres: ["energetic", "electronic", "indie", "piano"],
+    isFeatured: true,
+  ),
 ];

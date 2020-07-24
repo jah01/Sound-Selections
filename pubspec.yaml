@@ -39,6 +39,8 @@ dependencies:
 
   auto_size_text: ^2.1.0 #for the text in the carousel, among other places
 
+  intl: ^0.16.1 #for DateTime formatting
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

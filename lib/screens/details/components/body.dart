@@ -154,9 +154,10 @@ class Body extends StatelessWidget {
                     Container(
                       height: 175,
                       color: Colors.white,
-                      padding: EdgeInsets.all(defaultPadding),
+                      margin: EdgeInsets.symmetric(horizontal: defaultPadding * 2),
                       alignment: Alignment.topLeft,
-                     child: ListView.builder(
+                     child: ListView.separated(
+                       separatorBuilder: (BuildContext context, int index) => dividerVertical,
                        scrollDirection: Axis.horizontal,
                        itemCount: people.length,
                        //TODO people
@@ -164,7 +165,7 @@ class Body extends StatelessWidget {
                          //bool isArtist = index == 0;
                          //print("ARTIST----------------------------------- " + people.keys.elementAt(index).toString());
                          return Container(
-                           margin: EdgeInsets.symmetric(horizontal: defaultPadding),
+                           //margin: EdgeInsets.only(right: defaultPadding),
                            width: 80,
                            child: Column(
                              children: <Widget>[
@@ -176,7 +177,6 @@ class Body extends StatelessWidget {
                                    //image: isArtist ? DecorationImage(image: AssetImage("assets/images/" + song.getArtistImg), fit: BoxFit.fill) : DecorationImage(image: AssetImage("assets/images/empty.png"), fit: BoxFit.fill),
                                    image: DecorationImage(image: AssetImage("assets/images/" + people[index][2]), fit: BoxFit.fill),
                                  ),
-
                                  //color: Colors.grey,
                                ),
                                Container(height: 10, color: Colors.white,),
