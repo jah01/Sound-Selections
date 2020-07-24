@@ -85,7 +85,7 @@ class _CategoryList extends State<CategoryList> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10.0),
                               color: selectedIndex.getIndex == i
-                                  ? secondaryColor
+                                  ? thirdColor
                                   : Colors.transparent,
                             ),
                           ),

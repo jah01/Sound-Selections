@@ -127,7 +127,6 @@ class _SongList extends State<SongList> {
                                                   MaterialPageRoute(
                                                       builder: (context) =>
                                                           DetailsScreen(m, k)));
-                                              //TODO nav
                                             },
                                             //margin: EdgeInsets.all(5.0),
                                             child: ClipRRect(
@@ -268,7 +267,6 @@ class _SongList extends State<SongList> {
                                                     builder: (context) =>
                                                         DetailsScreen(
                                                             current, k)));
-                                            //TODO nav
                                           },
                                           child: Row(
                                             crossAxisAlignment:
@@ -371,7 +369,6 @@ class _SongList extends State<SongList> {
                                                   builder: (context) =>
                                                       DetailsScreen(
                                                           current, k)));
-                                          //TODO nav
                                         },
                                         child: Row(
                                           crossAxisAlignment:
