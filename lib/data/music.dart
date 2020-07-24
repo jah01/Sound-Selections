@@ -1,8 +1,9 @@
 class Music {
   final String title, artist, album, label, description, artistImg, artistC, albumImg, albumC, category;
   final DateTime release;
-  final List<String> features, writers, producers, genres;
+  final List<String> genres;
   final bool isFeatured;
+  final List<List<String>> people;
 
   Music({
     this.title,
@@ -16,9 +17,7 @@ class Music {
     this.albumC,
     this.category,
     this.release,
-    this.features,
-    this.writers,
-    this.producers,
+    this.people,
     this.genres,
     this.isFeatured
   });
@@ -59,39 +58,6 @@ class Music {
     return this.description;
   }
 
-  List<String> get getFeatures {
-    return this.features;
-  }
-
-  List<String> get getWriters {
-    return this.writers;
-  }
-
-  List<String> get getProducers {
-    return this.producers;
-  }
-
-  Map<String, String> getPeople() {
-    Map<String, String> map = new Map();
-    map.addAll({this.artist : "Artist"});
-    if (this.features.length > 0) {
-      for (String element in this.features) {
-        map.addAll({element : "Featured"});
-      }
-    }
-    if (this.writers.length > 0) {
-      for (String element in this.writers) {
-        map.addAll({element : "Writer"});
-      }
-    }
-    if (this.producers.length > 0) {
-      for (String element in this.producers) {
-        map.addAll({element : "Producer"});
-      }
-    }
-    return map;
-  }
-
   List<String> get getGenres {
     return this.genres;
   }
@@ -106,6 +72,36 @@ class Music {
 
   String get getAlbumC {
     return this.albumC;
+  }
+
+  // List<List<String>> get getPeople {
+  //   return this.people;
+  // }
+
+  List<List<String>> getPeople() {
+    List<List<String>> list = new List();
+    list.addAll(this.people);
+    list.insert(0, [this.artist, "Artist", this.artistImg, this.artistC]);
+    return list;
+  }
+
+
+  Map<String, String> getCredits() {
+    Map<String, String> map = new Map();
+    map.addAll({"Label: " : this.label, "Album: " : this.albumC});
+    List<List<String>> people = this.getPeople();
+    for (int i = 0; i < people.length; i++) {
+      if (people[i][3] != null) {
+        List<String> vals = map.values.toList();
+        for (int j = 0; j < vals.length; j++) {
+          if (people[i][3].compareTo(vals[j]) == 0) {
+            people[i][3] = "Same as " + people[j][3];
+          }
+        }
+        map.addAll({people[i][1] + ": " : people[i][3]});
+      }
+    }
+    return map;
   }
 
 }
@@ -126,9 +122,7 @@ List<Music> songs = [
     albumImg: "10DayTape.jpeg",
     albumC: "Fair use: https://en.wikipedia.org/w/index.php?curid=50047311",
     category: "Old Beats",
-    features: [],
-    writers: [],
-    producers: [],
+    people: [["test", "Writer", "empty.png", null]],
     genres: ["rap", "r&b"],
     isFeatured: true,
   ),
@@ -145,9 +139,7 @@ List<Music> songs = [
     albumImg: "StrangeDesire.jpg",
     albumC: "Fair use",
     category: "Never Gets Old",
-    features: [],
-    writers: [],
-    producers: [],
+    people: [[]],
     genres: ["indie", "electronic", "energetic"],
     isFeatured: true,
   ),

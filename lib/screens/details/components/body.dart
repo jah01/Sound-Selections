@@ -25,7 +25,9 @@ class Body extends StatelessWidget {
   //const Body({Key key, this.song}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    Map<String, String> people = song.getPeople();
+    List<List<String>> people = song.getPeople();
+    Map<String, String> credits = song.getCredits();
+    //TODO people
     return Hero(tag: k, flightShuttleBuilder: _flightShuttleBuilder, transitionOnUserGestures: true, child:Container(
       color: Colors.white,
       child: Stack(
@@ -98,7 +100,6 @@ class Body extends StatelessWidget {
                       color: Colors.white,
                       alignment: Alignment.topLeft,
                       padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 6.0),
-                      //TODO child can be Column
                       child: Text("Genres", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
                     ),
                     //Container(color: Colors.white, padding: EdgeInsets.only(top: defaultPadding),),
@@ -155,48 +156,52 @@ class Body extends StatelessWidget {
                       color: Colors.white,
                       padding: EdgeInsets.all(defaultPadding),
                       alignment: Alignment.topLeft,
-                      child: ListView.separated(
-                        separatorBuilder:
-                            (BuildContext context, int index) => dividerVertical,
-                        scrollDirection: Axis.horizontal,
-                        itemCount: people.length,
-                        itemBuilder: (context, index) {
-                          bool isArtist = index == 0;
-                          //print("ARTIST----------------------------------- " + people.keys.elementAt(index).toString());
-                          return Container(
-                            margin: EdgeInsets.symmetric(horizontal: defaultPadding),
-                            width: 80,
-                            child: Column(
-                              children: <Widget>[
-                                Container(
-                                  height: 80,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    //TODO make a map
-                                    image: isArtist ? DecorationImage(image: AssetImage("assets/images/" + song.getArtistImg), fit: BoxFit.fill) : DecorationImage(image: AssetImage("assets/images/empty.png"), fit: BoxFit.fill),
-                                  ),
+                     child: ListView.builder(
+                       scrollDirection: Axis.horizontal,
+                       itemCount: people.length,
+                       //TODO people
+                       itemBuilder: (context, index) {
+                         //bool isArtist = index == 0;
+                         //print("ARTIST----------------------------------- " + people.keys.elementAt(index).toString());
+                         return Container(
+                           margin: EdgeInsets.symmetric(horizontal: defaultPadding),
+                           width: 80,
+                           child: Column(
+                             children: <Widget>[
+                               Container(
+                                 height: 80,
+                                 decoration: BoxDecoration(
+                                   shape: BoxShape.circle,
+                                   //TODO make a map
+                                   //image: isArtist ? DecorationImage(image: AssetImage("assets/images/" + song.getArtistImg), fit: BoxFit.fill) : DecorationImage(image: AssetImage("assets/images/empty.png"), fit: BoxFit.fill),
+                                   image: DecorationImage(image: AssetImage("assets/images/" + people[index][2]), fit: BoxFit.fill),
+                                 ),
 
-                                  //color: Colors.grey,
-                                ),
-                                Container(height: 10, color: Colors.white,),
-                                Text(
-                                  people.keys.elementAt(index),
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(fontSize: 14, color: Colors.grey[600], fontWeight: FontWeight.w600),
-                                  maxLines: 2,
-                                ),
-                                Container(height: 5, color: Colors.white,),
-                                Text(
-                                  people.values.elementAt(index),
-                                  maxLines: 1,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(fontSize: 14, color: Colors.grey[400], fontWeight: FontWeight.w600),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      ),
+                                 //color: Colors.grey,
+                               ),
+                               Container(height: 10, color: Colors.white,),
+                               Text(
+                                 people[index][0],
+                                 //people.keys.elementAt(index),
+                                 //TODO people
+                                 textAlign: TextAlign.center,
+                                 style: TextStyle(fontSize: 14, color: Colors.grey[600], fontWeight: FontWeight.w600),
+                                 maxLines: 2,
+                               ),
+                               Container(height: 5, color: Colors.white,),
+                               Text(
+                                 people[index][1],
+                                 //people.values.elementAt(index),
+                                 //TODO people
+                                 maxLines: 1,
+                                 textAlign: TextAlign.center,
+                                 style: TextStyle(fontSize: 14, color: Colors.grey[400], fontWeight: FontWeight.w600),
+                               ),
+                             ],
+                           ),
+                         );
+                       },
+                     ),
                     ),
                     Container(
                       color: Colors.white,
@@ -207,26 +212,77 @@ class Body extends StatelessWidget {
                     Container(
                       color: Colors.white,
                       padding: EdgeInsets.symmetric(horizontal: defaultPadding * 2),
-                      child: RichText(
-                        textAlign: TextAlign.left,
-                        text: TextSpan(
-                          text: "Label: ",
-                          style: TextStyle(fontSize: 12, color: Colors.grey[600], fontWeight: FontWeight.w600),
-                          children: <TextSpan>[
-                            TextSpan(text: "${song.getLabel}\n", style: TextStyle(color: Colors.grey[400])),
-                            TextSpan(text: "Artist Image Copyright: ",
-                              children: <TextSpan>[
-                                TextSpan(text: "${song.getArtistC}\n", style: TextStyle(color: Colors.grey[400])),
-                                TextSpan(text: "Album Image Copyright: ",
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          for (int i = 0; i < credits.length; i++) RichText(
+                                textAlign: TextAlign.left,
+                                text: TextSpan(
+                                  text: credits.keys.elementAt(i),
+                                  style: TextStyle(fontSize: 12, color: Colors.grey[600], fontWeight: FontWeight.w600),
                                   children: <TextSpan>[
-                                    TextSpan(text: "${song.getAlbumC}", style: TextStyle(color: Colors.grey[400])),
+                                    TextSpan(text: credits.values.elementAt(i), style: TextStyle(color: Colors.grey[400])),
                                   ],
                                 ),
-                              ],
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
+                      // child: ListView.builder(
+                      //   itemCount: credits.length,
+                      //   itemBuilder: (context, i) {
+                      //     String currKey = credits.keys.elementAt(i);
+                      //     String currVal = credits.values.elementAt(i);
+                          // return RichText(
+                          //       textAlign: TextAlign.left,
+                          //       text: TextSpan(
+                          //         text: currKey,
+                          //         style: TextStyle(fontSize: 12, color: Colors.grey[600], fontWeight: FontWeight.w600),
+                          //         children: <TextSpan>[
+                          //           TextSpan(text: currVal, style: TextStyle(color: Colors.grey[400])),
+                          //         ],
+                          //       ),
+                          // );
+                      //   }
+                      // ),
+
+
+
+
+
+                      //  child: RichText(
+                      //   textAlign: TextAlign.left,
+                      //   text: TextSpan(
+                      //     text: "Label: ",
+                      //     style: TextStyle(fontSize: 12, color: Colors.grey[600], fontWeight: FontWeight.w600),
+                      //     children: <TextSpan>[
+                      //       TextSpan(text: "${song.getLabel}\n", style: TextStyle(color: Colors.grey[400])),
+                      //     ],
+                      //   ),
+                      //  ),
+
+
+
+
+                      // child: RichText(
+                      //   textAlign: TextAlign.left,
+                      //   text: TextSpan(
+                      //     text: "Label: ",
+                      //     style: TextStyle(fontSize: 12, color: Colors.grey[600], fontWeight: FontWeight.w600),
+                      //     children: <TextSpan>[
+                      //       TextSpan(text: "${song.getLabel}\n", style: TextStyle(color: Colors.grey[400])),
+                      //       TextSpan(text: "Artist Image Copyright: ",
+                      //         children: <TextSpan>[
+                      //           TextSpan(text: "${song.getArtistC}\n", style: TextStyle(color: Colors.grey[400])),
+                      //           TextSpan(text: "Album Image Copyright: ",
+                      //             children: <TextSpan>[
+                      //               TextSpan(text: "${song.getAlbumC}", style: TextStyle(color: Colors.grey[400])),
+                      //             ],
+                      //           ),
+                      //         ],
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
                     ),
                     Padding(padding: EdgeInsets.only(bottom: defaultPadding),),
                   ],
