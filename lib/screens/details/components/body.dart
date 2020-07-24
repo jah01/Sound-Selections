@@ -227,62 +227,6 @@ class Body extends StatelessWidget {
                           ),
                         ],
                       ),
-                      // child: ListView.builder(
-                      //   itemCount: credits.length,
-                      //   itemBuilder: (context, i) {
-                      //     String currKey = credits.keys.elementAt(i);
-                      //     String currVal = credits.values.elementAt(i);
-                          // return RichText(
-                          //       textAlign: TextAlign.left,
-                          //       text: TextSpan(
-                          //         text: currKey,
-                          //         style: TextStyle(fontSize: 12, color: Colors.grey[600], fontWeight: FontWeight.w600),
-                          //         children: <TextSpan>[
-                          //           TextSpan(text: currVal, style: TextStyle(color: Colors.grey[400])),
-                          //         ],
-                          //       ),
-                          // );
-                      //   }
-                      // ),
-
-
-
-
-
-                      //  child: RichText(
-                      //   textAlign: TextAlign.left,
-                      //   text: TextSpan(
-                      //     text: "Label: ",
-                      //     style: TextStyle(fontSize: 12, color: Colors.grey[600], fontWeight: FontWeight.w600),
-                      //     children: <TextSpan>[
-                      //       TextSpan(text: "${song.getLabel}\n", style: TextStyle(color: Colors.grey[400])),
-                      //     ],
-                      //   ),
-                      //  ),
-
-
-
-
-                      // child: RichText(
-                      //   textAlign: TextAlign.left,
-                      //   text: TextSpan(
-                      //     text: "Label: ",
-                      //     style: TextStyle(fontSize: 12, color: Colors.grey[600], fontWeight: FontWeight.w600),
-                      //     children: <TextSpan>[
-                      //       TextSpan(text: "${song.getLabel}\n", style: TextStyle(color: Colors.grey[400])),
-                      //       TextSpan(text: "Artist Image Copyright: ",
-                      //         children: <TextSpan>[
-                      //           TextSpan(text: "${song.getArtistC}\n", style: TextStyle(color: Colors.grey[400])),
-                      //           TextSpan(text: "Album Image Copyright: ",
-                      //             children: <TextSpan>[
-                      //               TextSpan(text: "${song.getAlbumC}", style: TextStyle(color: Colors.grey[400])),
-                      //             ],
-                      //           ),
-                      //         ],
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
                     ),
                     Padding(padding: EdgeInsets.only(bottom: defaultPadding),),
                   ],
