@@ -148,7 +148,7 @@ List<Music> songs = [
     features: [],
     writers: [],
     producers: [],
-    genres: ["Hip-Hop", "R&B", "Rap"],
+    genres: ["indie", "electronic", "energetic"],
     isFeatured: true,
   ),
   //Crash My Car: 2

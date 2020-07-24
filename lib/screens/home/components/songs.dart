@@ -122,7 +122,11 @@ class _SongList extends State<SongList> {
                                               //Navigator.pushNamed(context, "/details");
 //                                              Navigator.of(context).push(DetailsScreen(m, k));
 //                                              Navigator.push(context, DetailsScreen(m, k));
-                                              Navigator.push(context, MaterialPageRoute(builder: (context) => DetailsScreen(m, k)));
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          DetailsScreen(m, k)));
                                               //TODO nav
                                             },
                                             //margin: EdgeInsets.all(5.0),
@@ -247,7 +251,7 @@ class _SongList extends State<SongList> {
                                       itemBuilder: (context, j) {
                                         Music current = getAtIndex(i)[j];
                                         Key k = UniqueKey();
-                                        return Hero(tag: k, child: FlatButton(
+                                        return FlatButton(
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(4.0),
@@ -258,7 +262,12 @@ class _SongList extends State<SongList> {
                                               thirdColor.withAlpha(600),
                                           padding: EdgeInsets.all(0.0),
                                           onPressed: () {
-                                            Navigator.push(context, MaterialPageRoute(builder: (context) => DetailsScreen(current, k)));
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        DetailsScreen(
+                                                            current, k)));
                                             //TODO nav
                                           },
                                           child: Row(
@@ -268,11 +277,14 @@ class _SongList extends State<SongList> {
                                               ClipRRect(
                                                 borderRadius: BorderRadius.all(
                                                     Radius.circular(4.0)),
-                                                child: Image.asset(
-                                                  "assets/images/" +
-                                                      current.getAlbumImg,
-                                                  width: 120,
-                                                  height: 120,
+                                                child: Hero(
+                                                  tag: k,
+                                                  child: Image.asset(
+                                                    "assets/images/" +
+                                                        current.getAlbumImg,
+                                                    width: 120,
+                                                    height: 120,
+                                                  ),
                                                 ),
                                               ),
                                               Padding(
@@ -301,7 +313,7 @@ class _SongList extends State<SongList> {
                                               )
                                             ],
                                           ),
-                                        ),);
+                                        );
                                       })
                                 ],
                               ),
@@ -343,7 +355,7 @@ class _SongList extends State<SongList> {
                                     itemBuilder: (context, j) {
                                       Music current = getOtherAtIndex(i)[j];
                                       Key k = UniqueKey();
-                                      return Hero(key: k, child: FlatButton(
+                                      return FlatButton(
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(4.0),
@@ -353,7 +365,12 @@ class _SongList extends State<SongList> {
                                             thirdColor.withAlpha(600),
                                         padding: EdgeInsets.all(0.0),
                                         onPressed: () {
-                                          Navigator.push(context, MaterialPageRoute(builder: (context) => DetailsScreen(current, k)));
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      DetailsScreen(
+                                                          current, k)));
                                           //TODO nav
                                         },
                                         child: Row(
@@ -363,11 +380,14 @@ class _SongList extends State<SongList> {
                                             ClipRRect(
                                               borderRadius: BorderRadius.all(
                                                   Radius.circular(4.0)),
-                                              child: Image.asset(
-                                                "assets/images/" +
-                                                    current.getAlbumImg,
-                                                width: 90,
-                                                height: 90,
+                                              child: Hero(
+                                                tag: k,
+                                                child: Image.asset(
+                                                  "assets/images/" +
+                                                      current.getAlbumImg,
+                                                  width: 90,
+                                                  height: 90,
+                                                ),
                                               ),
                                             ),
                                             Padding(
@@ -396,7 +416,7 @@ class _SongList extends State<SongList> {
                                             ),
                                           ],
                                         ),
-                                      ),);
+                                      );
                                     },
                                   ),
                                 ],

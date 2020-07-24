@@ -90,138 +90,148 @@ class Body extends StatelessWidget {
                 ),
               ),
               Container(
+                padding: EdgeInsets.all(0.0),
                 color: Colors.white,
-                alignment: Alignment.topLeft,
-                padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 6.0),
-                child: Text("Genres", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
-              ),
-              //Container(color: Colors.white, padding: EdgeInsets.only(top: defaultPadding),),
-              Container(
-                height: 32,
-                color: Colors.white,
-                //color: Colors.grey,
-                padding: EdgeInsets.only(right: defaultPadding, left: defaultPadding),
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  separatorBuilder: (BuildContext context, int index) => dividerVerticalSmall,
-                  itemCount: song.getGenres.length,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        height: 32,
-                        alignment: Alignment.center,
-                        margin: EdgeInsets.only(left: defaultPadding),
-                        padding: EdgeInsets.symmetric(
-                          horizontal: defaultPadding,
-                          vertical: 0,
-                        ),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey[600], width: 2),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Text(
-                          song.getGenres[index],
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.grey[600]), textAlign: TextAlign.justify,
-                        ),
-                      );
-                    }
-                ),
-              ),
-              Container(
-                color: Colors.white,
-                alignment: Alignment.topLeft,
-                padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 6.0),
-                child: Text("Review", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
-              ),
-              Container(
-                color: Colors.white,
-                padding: EdgeInsets.symmetric(horizontal: defaultPadding * 2),
-                alignment: Alignment.topLeft,
-                child: Text(song.getDesc, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.grey[400]), textAlign: TextAlign.justify,),
-              ),
-              Container(
-                color: Colors.white,
-                alignment: Alignment.topLeft,
-                padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 6.0),
-                child: Text("People", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
-              ),
-              Container(
-                height: 175,
-                color: Colors.white,
-                padding: EdgeInsets.all(defaultPadding),
-                alignment: Alignment.topLeft,
-                child: ListView.separated(
-                  separatorBuilder:
-                      (BuildContext context, int index) => dividerVertical,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: people.length,
-                  itemBuilder: (context, index) {
-                    bool isArtist = index == 0;
-                    //print("ARTIST----------------------------------- " + people.keys.elementAt(index).toString());
-                    return Container(
-                      //padding: EdgeInsets.only(right: defaultPadding),
-                      width: 80,
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            height: 80,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                image: isArtist ? DecorationImage(image: AssetImage("assets/images/" + song.getArtistImg), fit: BoxFit.fill) : DecorationImage(image: AssetImage("assets/images/empty.png"), fit: BoxFit.fill),
-                            ),
-
-                            //color: Colors.grey,
-                          ),
-                          Container(height: 10, color: Colors.white,),
-                          Text(
-                            people.keys.elementAt(index),
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 14, color: Colors.grey[600], fontWeight: FontWeight.w600),
-                            maxLines: 2,
-                          ),
-                          Container(height: 5, color: Colors.white,),
-                          Text(
-                            people.values.elementAt(index),
-                            maxLines: 1,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 14, color: Colors.grey[400], fontWeight: FontWeight.w600),
-                          ),
-                        ],
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      color: Colors.white,
+                      alignment: Alignment.topLeft,
+                      padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 6.0),
+                      //TODO child can be Column
+                      child: Text("Genres", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
+                    ),
+                    //Container(color: Colors.white, padding: EdgeInsets.only(top: defaultPadding),),
+                    Container(
+                      height: 32,
+                      color: Colors.white,
+                      //color: Colors.grey,
+                      padding: EdgeInsets.only(right: defaultPadding, left: defaultPadding),
+                      child: ListView.separated(
+                          scrollDirection: Axis.horizontal,
+                          separatorBuilder: (BuildContext context, int index) => dividerVerticalSmall,
+                          itemCount: song.getGenres.length,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              height: 32,
+                              alignment: Alignment.center,
+                              margin: EdgeInsets.only(left: defaultPadding),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: defaultPadding,
+                                vertical: 0,
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey[600], width: 2),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Text(
+                                song.getGenres[index],
+                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.grey[600]), textAlign: TextAlign.justify,
+                              ),
+                            );
+                          }
                       ),
-                    );
-                  },
-                ),
-              ),
-              Container(
-                color: Colors.white,
-                alignment: Alignment.topLeft,
-                padding: EdgeInsets.fromLTRB(defaultPadding, 0.0, defaultPadding, 6.0),
-                child: Text("Additional Information", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
-              ),
-              Container(
-                color: Colors.white,
-                padding: EdgeInsets.symmetric(horizontal: defaultPadding * 2),
-                child: RichText(
-                  textAlign: TextAlign.left,
-                  text: TextSpan(
-                    text: "Label: ",
-                    style: TextStyle(fontSize: 12, color: Colors.grey[600], fontWeight: FontWeight.w600),
-                    children: <TextSpan>[
-                      TextSpan(text: "${song.getLabel}\n", style: TextStyle(color: Colors.grey[400])),
-                      TextSpan(text: "Artist Image Copyright: ",
-                      children: <TextSpan>[
-                        TextSpan(text: "${song.getArtistC}\n", style: TextStyle(color: Colors.grey[400])),
-                        TextSpan(text: "Album Image Copyright: ",
+                    ),
+                    Container(
+                      color: Colors.white,
+                      alignment: Alignment.topLeft,
+                      padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 6.0),
+                      child: Text("Review", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
+                    ),
+                    Container(
+                      color: Colors.white,
+                      padding: EdgeInsets.symmetric(horizontal: defaultPadding * 2),
+                      alignment: Alignment.topLeft,
+                      child: Text(song.getDesc, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.grey[400]), textAlign: TextAlign.justify,),
+                    ),
+                    Container(
+                      color: Colors.white,
+                      alignment: Alignment.topLeft,
+                      padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 6.0),
+                      child: Text("People", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
+                    ),
+                    Container(
+                      height: 175,
+                      color: Colors.white,
+                      padding: EdgeInsets.all(defaultPadding),
+                      alignment: Alignment.topLeft,
+                      child: ListView.separated(
+                        separatorBuilder:
+                            (BuildContext context, int index) => dividerVertical,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: people.length,
+                        itemBuilder: (context, index) {
+                          bool isArtist = index == 0;
+                          //print("ARTIST----------------------------------- " + people.keys.elementAt(index).toString());
+                          return Container(
+                            margin: EdgeInsets.symmetric(horizontal: defaultPadding),
+                            width: 80,
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                  height: 80,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    //TODO make a map
+                                    image: isArtist ? DecorationImage(image: AssetImage("assets/images/" + song.getArtistImg), fit: BoxFit.fill) : DecorationImage(image: AssetImage("assets/images/empty.png"), fit: BoxFit.fill),
+                                  ),
+
+                                  //color: Colors.grey,
+                                ),
+                                Container(height: 10, color: Colors.white,),
+                                Text(
+                                  people.keys.elementAt(index),
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 14, color: Colors.grey[600], fontWeight: FontWeight.w600),
+                                  maxLines: 2,
+                                ),
+                                Container(height: 5, color: Colors.white,),
+                                Text(
+                                  people.values.elementAt(index),
+                                  maxLines: 1,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 14, color: Colors.grey[400], fontWeight: FontWeight.w600),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    Container(
+                      color: Colors.white,
+                      alignment: Alignment.topLeft,
+                      padding: EdgeInsets.fromLTRB(defaultPadding, 0.0, defaultPadding, 6.0),
+                      child: Text("Additional Information", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
+                    ),
+                    Container(
+                      color: Colors.white,
+                      padding: EdgeInsets.symmetric(horizontal: defaultPadding * 2),
+                      child: RichText(
+                        textAlign: TextAlign.left,
+                        text: TextSpan(
+                          text: "Label: ",
+                          style: TextStyle(fontSize: 12, color: Colors.grey[600], fontWeight: FontWeight.w600),
                           children: <TextSpan>[
-                            TextSpan(text: "${song.getAlbumC}", style: TextStyle(color: Colors.grey[400])),
+                            TextSpan(text: "${song.getLabel}\n", style: TextStyle(color: Colors.grey[400])),
+                            TextSpan(text: "Artist Image Copyright: ",
+                              children: <TextSpan>[
+                                TextSpan(text: "${song.getArtistC}\n", style: TextStyle(color: Colors.grey[400])),
+                                TextSpan(text: "Album Image Copyright: ",
+                                  children: <TextSpan>[
+                                    TextSpan(text: "${song.getAlbumC}", style: TextStyle(color: Colors.grey[400])),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ],
                         ),
-                      ],
                       ),
-                    ],
-                  ),
+                    ),
+                    Padding(padding: EdgeInsets.only(bottom: defaultPadding),),
+                  ],
                 ),
               ),
-Padding(padding: EdgeInsets.only(bottom: defaultPadding),),
 //              Padding(padding: EdgeInsets.only(bottom: 6.0),),
             ],
           ),
