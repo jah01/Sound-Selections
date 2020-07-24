@@ -106,7 +106,7 @@ class Body extends StatelessWidget {
                       height: 32,
                       color: Colors.white,
                       //color: Colors.grey,
-                      padding: EdgeInsets.only(right: defaultPadding, left: defaultPadding),
+                      margin: EdgeInsets.symmetric(horizontal: defaultPadding * 2),
                       child: ListView.separated(
                           scrollDirection: Axis.horizontal,
                           separatorBuilder: (BuildContext context, int index) => dividerVerticalSmall,
@@ -115,7 +115,7 @@ class Body extends StatelessWidget {
                             return Container(
                               height: 32,
                               alignment: Alignment.center,
-                              margin: EdgeInsets.only(left: defaultPadding),
+                              //margin: EdgeInsets.only(left: defaultPadding),
                               padding: EdgeInsets.symmetric(
                                 horizontal: defaultPadding,
                                 vertical: 0,
@@ -126,7 +126,7 @@ class Body extends StatelessWidget {
                               ),
                               child: Text(
                                 song.getGenres[index],
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.grey[600]), textAlign: TextAlign.justify,
+                                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.grey[600]), textAlign: TextAlign.justify,
                               ),
                             );
                           }
@@ -236,6 +236,35 @@ class Body extends StatelessWidget {
             ],
           ),
           ),
+          Material(color: Colors.transparent, child: SafeArea(
+            child: Container(
+              margin: EdgeInsets.only(left: 6.0, top: 6.0),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.white,
+                boxShadow: [
+                  new BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 4.0,
+                    offset: Offset(0.0, 2),
+                  ),
+                ],
+              ),
+              child: IconButton(
+                icon: Icon(
+                  Icons.arrow_back_ios,
+                ),
+                iconSize: 20,
+                color: thirdColor,
+                splashColor: Colors.transparent,
+                //hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ),
+          ),),
         ],
       ),
     ),);
