@@ -91,16 +91,30 @@ class Music {
     map.addAll({"Label: " : this.label, "Album: " : this.albumC});
     List<List<String>> people = this.getPeople();
     for (int i = 0; i < people.length; i++) {
-      if (people[i][3] != null) {
-        List<String> vals = map.values.toList();
-        for (int j = 0; j < vals.length; j++) {
-          if (people[i][3].compareTo(vals[j]) == 0) {
-            people[i][3] = "Same as " + people[j][3];
-          }
+      if (people[i][2] != "empty.png") {
+        if (!map.containsKey(people[i][0] + ": ")) {
+          map.addAll({people[i][0] + ": " : people[i][3]});
         }
-        map.addAll({people[i][1] + ": " : people[i][3]});
       }
     }
+
+
+
+
+
+
+    // for (int i = 0; i < people.length; i++) {
+    //   if (people[i][3] != null) {
+    //     List<String> vals = map.values.toList();
+    //     for (int j = 0; j < vals.length; j++) {
+    //       print("VALS: " + vals[j]);
+    //       if (people[i][2].compareTo(vals[j]) == 0) {
+    //         people[i][3] = "Same as " + people[j][3];
+    //       }
+    //     }
+    //     map.addAll({people[i][1] + ": " : people[i][3]});
+    //   }
+    // }
     return map;
   }
 
@@ -122,7 +136,7 @@ List<Music> songs = [
     albumImg: "10DayTape.jpeg",
     albumC: "Fair use: https://en.wikipedia.org/w/index.php?curid=50047311",
     category: "Old Beats",
-    people: [["test", "Writer", "empty.png", null]],
+    people: [["test", "Writer", "empty.png", null], ["Chance the Rapper", "Music Stuff", "chance.png", "ok"]],
     genres: ["rap", "r&b"],
     isFeatured: true,
   ),
