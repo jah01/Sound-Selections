@@ -97,6 +97,9 @@ class Body extends StatelessWidget {
                 padding: EdgeInsets.all(0.0),
                 color: Colors.white,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Container(
                       color: Colors.white,
@@ -138,7 +141,7 @@ class Body extends StatelessWidget {
                     Container(
                       color: Colors.white,
                       alignment: Alignment.topLeft,
-                      padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 6.0),
+                      padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 8.0),
                       child: Text("Review", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
                     ),
                     Container(
@@ -150,67 +153,32 @@ class Body extends StatelessWidget {
                     Container(
                       color: Colors.white,
                       alignment: Alignment.topLeft,
-                      padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 6.0),
+                      padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 8.0),
                       child: Text("People", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
                     ),
-                    Container(
-                      height: 165,
-                      color: Colors.white,
-                      margin: EdgeInsets.symmetric(horizontal: defaultPadding * 2),
-                      alignment: Alignment.topLeft,
-                     child: ListView.separated(
-                       shrinkWrap: true,
-                       separatorBuilder: (BuildContext context, int index) => dividerVertical,
-                       scrollDirection: Axis.horizontal,
-                       itemCount: people.length,
-                       //TODO people
-                       itemBuilder: (context, index) {
-                         //bool isArtist = index == 0;
-                         //print("ARTIST----------------------------------- " + people.keys.elementAt(index).toString());
-                         return Container(
-                           color: Colors.white,
-                           //margin: EdgeInsets.only(right: defaultPadding),
-                           width: 80,
-                           child: Column(
-                             children: <Widget>[
-                               Container(
-                                 height: 80,
-                                 decoration: BoxDecoration(
-                                   shape: BoxShape.circle,
-                                   //TODO make a map
-                                   //image: isArtist ? DecorationImage(image: AssetImage("assets/images/" + song.getArtistImg), fit: BoxFit.fill) : DecorationImage(image: AssetImage("assets/images/empty.png"), fit: BoxFit.fill),
-                                   image: DecorationImage(image: AssetImage("assets/images/" + people[index][2]), fit: BoxFit.fill),
-                                 ),
-                                 //color: Colors.grey,
-                               ),
-                               Container(height: 10, color: Colors.white,),
-                               Text(
-                                 people[index][0],
-                                 //people.keys.elementAt(index),
-                                 //TODO people
-                                 textAlign: TextAlign.center,
-                                 style: TextStyle(fontSize: 14, color: Colors.grey[600], fontWeight: FontWeight.w600),
-                                 maxLines: 2,
-                               ),
-                               Container(height: 5, color: Colors.white,),
-                               AutoSizeText(
-                                 people[index][1],
-                                 //people.values.elementAt(index),
-                                 //TODO people
-                                 maxLines: 2,
-                                 textAlign: TextAlign.center,
-                                 style: TextStyle(fontSize: 14, color: Colors.grey[400], fontWeight: FontWeight.w600),
-                               ),
-                             ],
-                           ),
-                         );
-                       },
-                     ),
+//                    ConstrainedBox(
+//                      constraints: BoxConstraints(maxHeight: 400, minHeight: 20, maxWidth: 20, minWidth: 2),
+//                      child: Container(
+//                        color: Colors.grey,
+//                      ),
+//                    ),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: defaultPadding * 2),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        for (var i in people) peopleCard(people, i),
+                      ],
                     ),
+                  ),
+                ),
                     Container(
                       color: Colors.white,
                       alignment: Alignment.topLeft,
-                      padding: EdgeInsets.fromLTRB(defaultPadding, 0.0, defaultPadding, 6.0),
+                      padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 8.0),
+                      //TODO here
                       child: Text("Additional Information", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
                     ),
                     Container(
@@ -274,4 +242,45 @@ class Body extends StatelessWidget {
       ),
     ),);
   }
+}
+
+Widget peopleCard(List<List<String>> people, List<String> person) {
+  bool isLast = people[people.length - 1] == person;
+  return Container(
+    color: Colors.white,
+    margin: isLast ? EdgeInsets.all(0.0) : EdgeInsets.only(right: defaultPadding * 2),
+    width: 100,
+    child: Column(
+      children: <Widget>[
+        Container(
+          height: 100,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            //TODO make a map
+            //image: isArtist ? DecorationImage(image: AssetImage("assets/images/" + song.getArtistImg), fit: BoxFit.fill) : DecorationImage(image: AssetImage("assets/images/empty.png"), fit: BoxFit.fill),
+            image: DecorationImage(image: AssetImage("assets/images/" + person[2]), fit: BoxFit.fill),
+          ),
+          //color: Colors.grey,
+        ),
+        Container(height: 10, color: Colors.white,),
+        Text(
+          person[0],
+          //people.keys.elementAt(index),
+          //TODO people
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 14, color: Colors.grey[600], fontWeight: FontWeight.w600),
+          maxLines: 2,
+        ),
+        Container(height: 5, color: Colors.white,),
+        AutoSizeText(
+          person[1],
+          //people.values.elementAt(index),
+          //TODO people
+          maxLines: 2,
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 14, color: Colors.grey[400], fontWeight: FontWeight.w600),
+        ),
+      ],
+    ),
+  );
 }
