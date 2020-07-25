@@ -2,7 +2,7 @@ import 'music.dart';
 
 //List<String> categories = ["Top Songs", "Completely Underground", "New Hip-Hop/R&B", "New Electronic", "Classics", "Old Beats", "Never Gets Old"]; //original categories
 List<String> categories = ["Summer 2020", "April 2020", "Late 2019"];
-//List<String> genres = ["chill", "rap", "electronic", "instrumental", "ballad", "classic", "indie", "none", "experimental", "r&b", "energetic", "sampling"]; //not needed (yet?)
+//List<String> genres = ["chill", "rap", "electronic", "instrumental", "ballad", "classic", "indie pop", "none", "experimental", "r&b", "energetic", "sampling"]; //not needed (yet?)
 List<List<Music>> sortedCategories = new List(categories.length);
 
 void populateAll() {
@@ -36,7 +36,7 @@ List<Music> featured(List<Music> list) {
 List<Music> getOtherAtIndex(int index) {
   List<Music> l = getAtIndex(index);
   List<Music> rl = new List();
-  for (int i = 5; i < l.length; i++) {
+  for (int i = 0; i < l.length; i++) { //TODO change to 5 if wanted
     if (!l[i].getIsFeatured) {
       rl.add(l[i]);
     }

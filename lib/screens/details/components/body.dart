@@ -29,7 +29,6 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     List<List<String>> people = song.getPeople();
     Map<String, String> credits = song.getCredits();
-    //TODO people
     return Hero(tag: k, flightShuttleBuilder: _flightShuttleBuilder, transitionOnUserGestures: true, child:Container(
       color: Colors.white,
       child: Stack(
@@ -156,12 +155,6 @@ class Body extends StatelessWidget {
                       padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 8.0),
                       child: Text("People", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
                     ),
-//                    ConstrainedBox(
-//                      constraints: BoxConstraints(maxHeight: 400, minHeight: 20, maxWidth: 20, minWidth: 2),
-//                      child: Container(
-//                        color: Colors.grey,
-//                      ),
-//                    ),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: defaultPadding * 2),
                   child: SingleChildScrollView(
@@ -178,7 +171,6 @@ class Body extends StatelessWidget {
                       color: Colors.white,
                       alignment: Alignment.topLeft,
                       padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 8.0),
-                      //TODO here
                       child: Text("Additional Information", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
                     ),
                     Container(
@@ -205,7 +197,6 @@ class Body extends StatelessWidget {
                   ],
                 ),
               ),
-//              Padding(padding: EdgeInsets.only(bottom: 6.0),),
             ],
           ),
           ),
@@ -256,17 +247,12 @@ Widget peopleCard(List<List<String>> people, List<String> person) {
           height: 100,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            //TODO make a map
-            //image: isArtist ? DecorationImage(image: AssetImage("assets/images/" + song.getArtistImg), fit: BoxFit.fill) : DecorationImage(image: AssetImage("assets/images/empty.png"), fit: BoxFit.fill),
             image: DecorationImage(image: AssetImage("assets/images/" + person[2]), fit: BoxFit.fill),
           ),
-          //color: Colors.grey,
         ),
         Container(height: 10, color: Colors.white,),
         Text(
           person[0],
-          //people.keys.elementAt(index),
-          //TODO people
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 14, color: Colors.grey[600], fontWeight: FontWeight.w600),
           maxLines: 2,
@@ -274,8 +260,6 @@ Widget peopleCard(List<List<String>> people, List<String> person) {
         Container(height: 5, color: Colors.white,),
         AutoSizeText(
           person[1],
-          //people.values.elementAt(index),
-          //TODO people
           maxLines: 2,
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 14, color: Colors.grey[400], fontWeight: FontWeight.w600),

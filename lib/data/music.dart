@@ -164,4 +164,22 @@ List<Music> songs = [
     isFeatured: true,
     artistRole: "Artist/Writers",
   ),
+  //Super Far: 3
+  Music(
+    title: "Super Far",
+    artist: "LANY",
+    album: "LANY",
+    label: "Universal Music Group & Polydor Records",
+    release: DateTime(2017, 6, 28),
+    description: "LANY's first album, by the same name, includes Super Far, a snapping, clapping, and shouting song about breaking up. LANY goes through the emotions of someone who is super far from home (hence the name) as they try to figure out why they are still in a relationship with someone who doesn't care and \"doesn't even try.\" This catchy tune is my favorite from the album, but be sure to check out Thick and Thin by LANY and Mean It by Lauv, the latter LANY is featured in.",
+    artistImg: "lany.png",
+    artistC: "Fair use",
+    albumImg: "lanyAlbum.png",
+    albumC: "Fair use: album cover art accompanies the post’s commentary about the song",
+    category: "April 2020",
+    people: [["Paul Klein (of LANY)", "Writer", "paulKlein.png", "Fair use"], ["Ryan Tedder", "Writer", "ryanTedder.png", "This file is made available under the Creative Commons CC0 1.0 Universal Public Domain Dedication."]],
+    genres: ["electronic", "indie pop"],
+    isFeatured: false,
+    artistRole: "Artist",
+  ),
 ];
