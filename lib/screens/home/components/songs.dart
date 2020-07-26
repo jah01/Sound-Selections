@@ -116,7 +116,7 @@ class _SongList extends State<SongList> {
                                         itemBuilder: (context, index) {
                                           Key k = UniqueKey();
                                           List<Music> current = getAtIndex(i);
-                                          Music m = current[index];
+                                          Music m = current[current.length - index - 1];
                                           return GestureDetector(
                                             onTap: () {
                                               //Navigator.pushNamed(context, "/details");
