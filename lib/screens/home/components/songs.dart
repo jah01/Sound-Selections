@@ -116,7 +116,8 @@ class _SongList extends State<SongList> {
                                         itemBuilder: (context, index) {
                                           Key k = UniqueKey();
                                           List<Music> current = getAtIndex(i);
-                                          Music m = current[current.length - index - 1];
+                                          Music m = current[
+                                              current.length - index - 1];
                                           return GestureDetector(
                                             onTap: () {
                                               //Navigator.pushNamed(context, "/details");
@@ -129,83 +130,105 @@ class _SongList extends State<SongList> {
                                                           DetailsScreen(m, k)));
                                             },
                                             //margin: EdgeInsets.all(5.0),
-                                            child: ClipRRect(
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                boxShadow: [
+                                                  new BoxShadow(
+                                                    color: Colors.black26,
+                                                    blurRadius: 4.0,
+                                                    offset: Offset(0.0, 2),
+                                                  ),
+                                                ],
                                                 borderRadius: BorderRadius.all(
                                                     Radius.circular(8.0)),
-                                                child: Stack(
-                                                  children: <Widget>[
-                                                    Hero(
-                                                      tag: k,
-                                                      child: Image.asset(
-                                                          "assets/images/" +
-                                                              m.getAlbumImg),
-                                                    ),
-                                                    //Image.network(m.getAlbumImg),
-                                                    Positioned(
-                                                      bottom: 0.0,
-                                                      left: 0.0,
-                                                      right: 0.0,
-                                                      child: Container(
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          gradient:
-                                                              LinearGradient(
-                                                            colors: [
-                                                              Color.fromARGB(
-                                                                  200, 0, 0, 0),
-                                                              Color.fromARGB(
-                                                                  0, 0, 0, 0)
+                                              ),
+                                              child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(8.0)),
+                                                  child: Stack(
+                                                    children: <Widget>[
+                                                      Hero(
+                                                        tag: k,
+                                                        child: Image.asset(
+                                                            "assets/images/" +
+                                                                m.getAlbumImg),
+                                                      ),
+                                                      //Image.network(m.getAlbumImg),
+                                                      Positioned(
+                                                        bottom: 0.0,
+                                                        left: 0.0,
+                                                        right: 0.0,
+                                                        child: Container(
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            gradient:
+                                                                LinearGradient(
+                                                              colors: [
+                                                                Color.fromARGB(
+                                                                    200,
+                                                                    0,
+                                                                    0,
+                                                                    0),
+                                                                Color.fromARGB(
+                                                                    0, 0, 0, 0)
+                                                              ],
+                                                              stops: [.4, 1],
+                                                              begin: Alignment
+                                                                  .bottomCenter,
+                                                              end: Alignment
+                                                                  .topCenter,
+                                                            ),
+                                                          ),
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                                  vertical:
+                                                                      10.0,
+                                                                  horizontal:
+                                                                      20.0),
+                                                          child: Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: <Widget>[
+                                                              //two separate ones
+                                                              AutoSizeText(
+                                                                m.getTitle,
+                                                                style:
+                                                                    TextStyle(
+                                                                  color:
+                                                                      thirdColor,
+                                                                  fontSize:
+                                                                      20.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
+                                                                maxLines: 1,
+                                                              ),
+                                                              AutoSizeText(
+                                                                m.getArtist,
+                                                                style:
+                                                                    TextStyle(
+                                                                  //color: Colors.grey[400],
+                                                                  color: thirdColor
+                                                                      .withAlpha(
+                                                                          200),
+                                                                  fontSize:
+                                                                      16.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
+                                                                maxLines: 1,
+                                                              ),
                                                             ],
-                                                            stops: [.4, 1],
-                                                            begin: Alignment
-                                                                .bottomCenter,
-                                                            end: Alignment
-                                                                .topCenter,
                                                           ),
                                                         ),
-                                                        padding: EdgeInsets
-                                                            .symmetric(
-                                                                vertical: 10.0,
-                                                                horizontal:
-                                                                    20.0),
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: <Widget>[
-                                                            //two separate ones
-                                                            AutoSizeText(
-                                                              m.getTitle,
-                                                              style: TextStyle(
-                                                                color:
-                                                                    thirdColor,
-                                                                fontSize: 20.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                              ),
-                                                              maxLines: 1,
-                                                            ),
-                                                            AutoSizeText(
-                                                              m.getArtist,
-                                                              style: TextStyle(
-                                                                //color: Colors.grey[400],
-                                                                color: thirdColor
-                                                                    .withAlpha(
-                                                                        200),
-                                                                fontSize: 16.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                              ),
-                                                              maxLines: 1,
-                                                            ),
-                                                          ],
-                                                        ),
                                                       ),
-                                                    ),
-                                                  ],
-                                                )),
+                                                    ],
+                                                  )),
+                                            ),
                                           );
                                         },
                                       ),
@@ -272,16 +295,31 @@ class _SongList extends State<SongList> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.center,
                                             children: <Widget>[
-                                              ClipRRect(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(4.0)),
-                                                child: Hero(
-                                                  tag: k,
-                                                  child: Image.asset(
-                                                    "assets/images/" +
-                                                        current.getAlbumImg,
-                                                    width: 120,
-                                                    height: 120,
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                  boxShadow: [
+                                                    new BoxShadow(
+                                                      color: Colors.black26,
+                                                      blurRadius: 2.0,
+                                                      offset: Offset(0.0, 2),
+                                                    ),
+                                                  ],
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(4.0)),
+                                                ),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(4.0)),
+                                                  child: Hero(
+                                                    tag: k,
+                                                    child: Image.asset(
+                                                      "assets/images/" +
+                                                          current.getAlbumImg,
+                                                      width: 120,
+                                                      height: 120,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
@@ -374,16 +412,29 @@ class _SongList extends State<SongList> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.center,
                                           children: <Widget>[
-                                            ClipRRect(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(4.0)),
-                                              child: Hero(
-                                                tag: k,
-                                                child: Image.asset(
-                                                  "assets/images/" +
-                                                      current.getAlbumImg,
-                                                  width: 90,
-                                                  height: 90,
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                boxShadow: [
+                                                  new BoxShadow(
+                                                    color: Colors.black26,
+                                                    blurRadius: 2.0,
+                                                    offset: Offset(0.0, 2),
+                                                  ),
+                                                ],
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(4.0)),
+                                              ),
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(4.0)),
+                                                child: Hero(
+                                                  tag: k,
+                                                  child: Image.asset(
+                                                    "assets/images/" +
+                                                        current.getAlbumImg,
+                                                    width: 90,
+                                                    height: 90,
+                                                  ),
                                                 ),
                                               ),
                                             ),
