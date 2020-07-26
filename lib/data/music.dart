@@ -236,4 +236,22 @@ List<Music> songs = [
     isFeatured: false,
     artistRole: "Artist/Writer/Producer",
   ),
+  //Admit Defeat: 7
+  Music(
+    title: "Admit Defeat",
+    artist: "Bastille",
+    album: "Doom Days (This Got Out Of Hand Edition)",
+    label: "Universal Music Group",
+    release: DateTime(2019, 12, 6),
+    description: "The first new addition to Bastille's extended edition album, Admit Defeat is your typical Bastille jam. That is to say it's full of background harmonies that perfectly complement the melody as well as Dan Smith's voice. The song goes into the mind of a person who met someone who \"stirred something\" in him as he begs her to \"wrap [herself] around\" him. He desires to be with her for more than just one night, as his mind surrenders to thoughts of only her.",
+    artistImg: "bastille.png",
+    artistC: "Fair use",
+    albumImg: "doomDaysExtended.jpg",
+    albumC: "Fair use",
+    category: "April 2020",
+    people: [["Dan Smith (of Bastille)", "Writer/Producer", "danSmith.png", "This file is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported license."], ["Kyle Simmons (of Bastille)", "Producer", "kyleSimmons.jpg", "Fair use"], ["Mark Crew", "Producer", "empty.png", null]],
+    genres: ["energetic", "electronic", "rock"],
+    isFeatured: false,
+    artistRole: "Artist",
+  ),
 ];

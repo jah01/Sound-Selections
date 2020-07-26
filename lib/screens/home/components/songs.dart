@@ -271,7 +271,7 @@ class _SongList extends State<SongList> {
                                       physics: NeverScrollableScrollPhysics(),
                                       itemCount: featured(getAtIndex(i)).length,
                                       itemBuilder: (context, j) {
-                                        Music current = getAtIndex(i)[j];
+                                        Music current = featured(getAtIndex(i))[j];
                                         Key k = UniqueKey();
                                         return FlatButton(
                                           shape: RoundedRectangleBorder(
@@ -326,12 +326,12 @@ class _SongList extends State<SongList> {
                                               Padding(
                                                   padding: EdgeInsets.symmetric(
                                                       horizontal: 8.0)),
-                                              Container(
+                                              Flexible(child: Container(
                                                 child: Align(
                                                   alignment: Alignment.topLeft,
                                                   child: Column(
                                                     children: <Widget>[
-                                                      Text(
+                                                      AutoSizeText(
                                                         current.getTitle +
                                                             "\n" +
                                                             current.getArtist +
@@ -342,11 +342,12 @@ class _SongList extends State<SongList> {
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
+                                                        overflow: TextOverflow.ellipsis,
                                                       ),
                                                     ],
                                                   ),
                                                 ),
-                                              )
+                                              ),),
                                             ],
                                           ),
                                         );
@@ -441,12 +442,14 @@ class _SongList extends State<SongList> {
                                             Padding(
                                                 padding: EdgeInsets.symmetric(
                                                     horizontal: 8.0)),
+                                            Flexible(child:
                                             Container(
+                                              //padding: EdgeInsets.all(16.0),
                                               child: Align(
                                                 alignment: Alignment.topLeft,
                                                 child: Column(
                                                   children: <Widget>[
-                                                    Text(
+                                                    AutoSizeText(
                                                       current.getTitle +
                                                           "\n" +
                                                           current.getArtist +
@@ -457,10 +460,12 @@ class _SongList extends State<SongList> {
                                                         fontWeight:
                                                             FontWeight.w500,
                                                       ),
+                                                      overflow: TextOverflow.ellipsis,
                                                     ),
                                                   ],
                                                 ),
                                               ),
+                                            ),
                                             ),
                                           ],
                                         ),

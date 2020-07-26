@@ -74,7 +74,6 @@ class _Body extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    print(selectedIndex);
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
