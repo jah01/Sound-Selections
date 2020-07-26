@@ -254,4 +254,22 @@ List<Music> songs = [
     isFeatured: false,
     artistRole: "Artist",
   ),
+  //I Lost a Friend: 8
+  Music(
+    title: "I Lost a Friend",
+    artist: "FINNEAS",
+    album: "Blood Harmony",
+    label: "OYOY, AWAL",
+    release: DateTime(2019, 5, 3),
+    description: "Finneas crafts a wonderful marriage of deep lyrics and excellent execution of the right amount of piano, bass, and synth in his hit \"I Lost a Friend.\" The title is pretty self-explanatory, but the song dives deep into the feeling of no longer having a person in your life. My favorite part is when the bass and synth kick in towards the end, and there's really no part of the song that needs any more or any less of something; it just sounds right.",
+    artistImg: "finneas.png",
+    artistC: "This file is licensed under the Creative Commons Attribution-Share Alike 4.0 International license. Attribution :  © Glenn Francis, www.PacificProDigital.com.",
+    albumImg: "bloodHarmony.png",
+    albumC: "Fair use: album cover art accompanies the post’s commentary about the song.",
+    category: "April 2020",
+    people: [],
+    genres: ["sad", "piano"],
+    isFeatured: true,
+    artistRole: "Artist/Writer/Producer",
+  ),
 ];
