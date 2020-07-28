@@ -331,6 +331,7 @@ class _SongList extends State<SongList> {
                                                   alignment: Alignment.topLeft,
                                                   child: Column(
                                                     children: <Widget>[
+                                                      //TODO text here
                                                       AutoSizeText(
                                                         current.getTitle +
                                                             "\n" +
@@ -449,6 +450,7 @@ class _SongList extends State<SongList> {
                                                 alignment: Alignment.topLeft,
                                                 child: Column(
                                                   children: <Widget>[
+                                                    //TODO text here
                                                     AutoSizeText(
                                                       current.getTitle +
                                                           "\n" +
