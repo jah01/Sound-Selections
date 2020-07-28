@@ -332,18 +332,45 @@ class _SongList extends State<SongList> {
                                                   child: Column(
                                                     children: <Widget>[
                                                       //TODO text here
-                                                      AutoSizeText(
-                                                        current.getTitle +
-                                                            "\n" +
-                                                            current.getArtist +
-                                                            "\n" +
-                                                            current.getAlbum,
-                                                        style: TextStyle(
-                                                          fontSize: 16,
-                                                          fontWeight:
-                                                              FontWeight.w500,
+                                                  Align(
+                                                  alignment: Alignment.topLeft,
+                                                    child: AutoSizeText(
+                                                      current.getTitle,
+                                                      style: TextStyle(
+                                                        fontSize: 20,
+                                                        fontWeight: FontWeight.w500,
+                                                        //color: thirdColor,
+                                                        color: Color(0xff469ba8),
+                                                      ),
+                                                      overflow: TextOverflow.ellipsis,
+                                                      textAlign: TextAlign.start,
+                                                    ),
+                                                  ),
+                                                      Align(
+                                                        alignment: Alignment.topLeft,
+                                                        child: AutoSizeText(
+                                                          current.getArtist,
+                                                          style: TextStyle(
+                                                            fontSize: 16,
+                                                            fontWeight: FontWeight.w500,
+                                                            color: thirdColor,
+                                                          ),
+                                                          overflow: TextOverflow.ellipsis,
+                                                          textAlign: TextAlign.start,
                                                         ),
-                                                        overflow: TextOverflow.ellipsis,
+                                                      ),
+                                                      Align(
+                                                        alignment: Alignment.topLeft,
+                                                        child: AutoSizeText(
+                                                          current.getAlbum,
+                                                          style: TextStyle(
+                                                            fontSize: 16,
+                                                            fontWeight: FontWeight.w500,
+                                                            color: thirdColor,
+                                                          ),
+                                                          overflow: TextOverflow.ellipsis,
+                                                          textAlign: TextAlign.start,
+                                                        ),
                                                       ),
                                                     ],
                                                   ),
@@ -451,18 +478,45 @@ class _SongList extends State<SongList> {
                                                 child: Column(
                                                   children: <Widget>[
                                                     //TODO text here
-                                                    AutoSizeText(
-                                                      current.getTitle +
-                                                          "\n" +
-                                                          current.getArtist +
-                                                          "\n" +
-                                                          current.getAlbum,
-                                                      style: TextStyle(
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.w500,
+                                                    Align(
+                                                      alignment: Alignment.topLeft,
+                                                      child: AutoSizeText(
+                                                        current.getTitle,
+                                                        style: TextStyle(
+                                                          fontSize: 16,
+                                                          fontWeight: FontWeight.w500,
+                                                          //color: thirdColor,
+                                                          color: Color(0xff3c8590),
+                                                        ),
+                                                        overflow: TextOverflow.ellipsis,
+                                                        textAlign: TextAlign.start,
                                                       ),
-                                                      overflow: TextOverflow.ellipsis,
+                                                    ),
+                                                    Align(
+                                                      alignment: Alignment.topLeft,
+                                                      child: AutoSizeText(
+                                                        current.getArtist,
+                                                        style: TextStyle(
+                                                          fontSize: 14,
+                                                          fontWeight: FontWeight.w500,
+                                                          color: thirdColor,
+                                                        ),
+                                                        overflow: TextOverflow.ellipsis,
+                                                        textAlign: TextAlign.start,
+                                                      ),
+                                                    ),
+                                                    Align(
+                                                      alignment: Alignment.topLeft,
+                                                      child: AutoSizeText(
+                                                        current.getAlbum,
+                                                        style: TextStyle(
+                                                          fontSize: 14,
+                                                          fontWeight: FontWeight.w500,
+                                                          color: thirdColor,
+                                                        ),
+                                                        overflow: TextOverflow.ellipsis,
+                                                        textAlign: TextAlign.start,
+                                                      ),
                                                     ),
                                                   ],
                                                 ),

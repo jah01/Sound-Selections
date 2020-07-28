@@ -493,7 +493,7 @@ List<Music> songs = [
     title: "Centerfold",
     artist: "Smallpools",
     album: "THE SCIENCE OF LETTING GO",
-    label: "RCA Records",
+    label: "Kobalt Music Group",
     release: DateTime(2017, 8, 4),
     description: "Centerfold is a very odd piece of music that uses very strange mechanics, but when you put it all together, you get a story of messing up and learning from it, as frontman Sean Scanlon tells Billboard. This song does not fall far from the album's catchy, if not oddly entertaining, tunes.",
     artistImg: "smallpools.png",
