@@ -30,7 +30,6 @@ class _CategoryList extends State<CategoryList> {
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
       children: <Widget>[
         Container(

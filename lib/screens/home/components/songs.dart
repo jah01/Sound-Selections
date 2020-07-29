@@ -61,24 +61,12 @@ class _SongList extends State<SongList> {
                       child: Column(
                         children: <Widget>[
                           //New Picks section---------------------------------
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              "Recently Added",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
-                          Padding(padding: EdgeInsets.symmetric(vertical: 8.0)),
+                          header("Recently Added"),
                           Container(
                             height: 260.0,
                             width: MediaQuery.of(context).size.width,
                             color: Colors.transparent,
                             child: Container(
-                              //padding: EdgeInsets.all(defaultPadding),
-                              //decoration: defaultDecoration,
                               child: Stack(
                                 children: <Widget>[
                                   Container(
@@ -120,16 +108,12 @@ class _SongList extends State<SongList> {
                                               current.length - index - 1];
                                           return GestureDetector(
                                             onTap: () {
-                                              //Navigator.pushNamed(context, "/details");
-//                                              Navigator.of(context).push(DetailsScreen(m, k));
-//                                              Navigator.push(context, DetailsScreen(m, k));
                                               Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
                                                           DetailsScreen(m, k)));
                                             },
-                                            //margin: EdgeInsets.all(5.0),
                                             child: Container(
                                               decoration: BoxDecoration(
                                                 boxShadow: [
@@ -191,7 +175,6 @@ class _SongList extends State<SongList> {
                                                                 CrossAxisAlignment
                                                                     .start,
                                                             children: <Widget>[
-                                                              //two separate ones
                                                               AutoSizeText(
                                                                 m.getTitle,
                                                                 style:
@@ -242,19 +225,7 @@ class _SongList extends State<SongList> {
                               padding: EdgeInsets.symmetric(
                                   vertical: defaultPadding)),
                           //Featured section----------------------------------
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              "Featured",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 8.0),
-                          ),
+                          header("Featured"),
                           Container(
                             width: MediaQuery.of(context).size.width,
                             color: Colors.transparent,
@@ -264,122 +235,20 @@ class _SongList extends State<SongList> {
                               child: Column(
                                 children: <Widget>[
                                   ListView.separated(
-                                      separatorBuilder:
-                                          (BuildContext context, int index) =>
-                                              divider,
-                                      shrinkWrap: true,
-                                      physics: NeverScrollableScrollPhysics(),
-                                      itemCount: featured(getAtIndex(i)).length,
-                                      itemBuilder: (context, j) {
-                                        Music current = featured(getAtIndex(i))[j];
-                                        Key k = UniqueKey();
-                                        return FlatButton(
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(4.0),
-                                          ),
-                                          splashColor:
-                                              thirdColor.withAlpha(800),
-                                          highlightColor:
-                                              thirdColor.withAlpha(600),
-                                          padding: EdgeInsets.all(0.0),
-                                          onPressed: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        DetailsScreen(
-                                                            current, k)));
-                                          },
-                                          child: Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: <Widget>[
-                                              Container(
-                                                decoration: BoxDecoration(
-                                                  boxShadow: [
-                                                    new BoxShadow(
-                                                      color: Colors.black26,
-                                                      blurRadius: 2.0,
-                                                      offset: Offset(0.0, 2),
-                                                    ),
-                                                  ],
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(4.0)),
-                                                ),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(4.0)),
-                                                  child: Hero(
-                                                    tag: k,
-                                                    child: Image.asset(
-                                                      "assets/images/" +
-                                                          current.getAlbumImg,
-                                                      width: 120,
-                                                      height: 120,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Padding(
-                                                  padding: EdgeInsets.symmetric(
-                                                      horizontal: 8.0)),
-                                              Flexible(child: Container(
-                                                child: Align(
-                                                  alignment: Alignment.topLeft,
-                                                  child: Column(
-                                                    children: <Widget>[
-                                                      //TODO text here
-                                                  Align(
-                                                  alignment: Alignment.topLeft,
-                                                    child: AutoSizeText(
-                                                      current.getTitle,
-                                                      style: TextStyle(
-                                                        fontSize: 20,
-                                                        fontWeight: FontWeight.w500,
-                                                        //color: thirdColor,
-                                                        color: Color(0xff469ba8),
-                                                      ),
-                                                      overflow: TextOverflow.ellipsis,
-                                                      textAlign: TextAlign.start,
-                                                    ),
-                                                  ),
-                                                      Align(
-                                                        alignment: Alignment.topLeft,
-                                                        child: AutoSizeText(
-                                                          current.getArtist,
-                                                          style: TextStyle(
-                                                            fontSize: 16,
-                                                            fontWeight: FontWeight.w500,
-                                                            color: thirdColor,
-                                                          ),
-                                                          overflow: TextOverflow.ellipsis,
-                                                          textAlign: TextAlign.start,
-                                                        ),
-                                                      ),
-                                                      Align(
-                                                        alignment: Alignment.topLeft,
-                                                        child: AutoSizeText(
-                                                          current.getAlbum,
-                                                          style: TextStyle(
-                                                            fontSize: 16,
-                                                            fontWeight: FontWeight.w500,
-                                                            color: thirdColor,
-                                                          ),
-                                                          overflow: TextOverflow.ellipsis,
-                                                          textAlign: TextAlign.start,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),),
-                                            ],
-                                          ),
-                                        );
-                                      })
+                                    separatorBuilder:
+                                        (BuildContext context, int index) =>
+                                            divider,
+                                    shrinkWrap: true,
+                                    physics: NeverScrollableScrollPhysics(),
+                                    itemCount: featured(getAtIndex(i)).length,
+                                    itemBuilder: (context, j) {
+                                      Music current =
+                                          featured(getAtIndex(i))[j];
+                                      Key k = UniqueKey();
+                                      return songButton(
+                                          context, k, current, 20, 16, 120);
+                                    },
+                                  ),
                                 ],
                               ),
                             ),
@@ -388,21 +257,8 @@ class _SongList extends State<SongList> {
                               padding: EdgeInsets.symmetric(
                                   vertical: defaultPadding)),
                           //Other section----------------------------------
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              "Other Selections",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 8.0),
-                          ),
+                          header("Other Selections"),
                           Container(
-                            //height: 1040.0,
                             width: MediaQuery.of(context).size.width,
                             color: Colors.transparent,
                             child: Container(
@@ -420,112 +276,8 @@ class _SongList extends State<SongList> {
                                     itemBuilder: (context, j) {
                                       Music current = getOtherAtIndex(i)[j];
                                       Key k = UniqueKey();
-                                      return FlatButton(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(4.0),
-                                        ),
-                                        splashColor: thirdColor.withAlpha(800),
-                                        highlightColor:
-                                            thirdColor.withAlpha(600),
-                                        padding: EdgeInsets.all(0.0),
-                                        onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      DetailsScreen(
-                                                          current, k)));
-                                        },
-                                        child: Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: <Widget>[
-                                            Container(
-                                              decoration: BoxDecoration(
-                                                boxShadow: [
-                                                  new BoxShadow(
-                                                    color: Colors.black26,
-                                                    blurRadius: 2.0,
-                                                    offset: Offset(0.0, 2),
-                                                  ),
-                                                ],
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(4.0)),
-                                              ),
-                                              child: ClipRRect(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(4.0)),
-                                                child: Hero(
-                                                  tag: k,
-                                                  child: Image.asset(
-                                                    "assets/images/" +
-                                                        current.getAlbumImg,
-                                                    width: 90,
-                                                    height: 90,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: 8.0)),
-                                            Flexible(child:
-                                            Container(
-                                              //padding: EdgeInsets.all(16.0),
-                                              child: Align(
-                                                alignment: Alignment.topLeft,
-                                                child: Column(
-                                                  children: <Widget>[
-                                                    //TODO text here
-                                                    Align(
-                                                      alignment: Alignment.topLeft,
-                                                      child: AutoSizeText(
-                                                        current.getTitle,
-                                                        style: TextStyle(
-                                                          fontSize: 16,
-                                                          fontWeight: FontWeight.w500,
-                                                          //color: thirdColor,
-                                                          color: Color(0xff3c8590),
-                                                        ),
-                                                        overflow: TextOverflow.ellipsis,
-                                                        textAlign: TextAlign.start,
-                                                      ),
-                                                    ),
-                                                    Align(
-                                                      alignment: Alignment.topLeft,
-                                                      child: AutoSizeText(
-                                                        current.getArtist,
-                                                        style: TextStyle(
-                                                          fontSize: 14,
-                                                          fontWeight: FontWeight.w500,
-                                                          color: thirdColor,
-                                                        ),
-                                                        overflow: TextOverflow.ellipsis,
-                                                        textAlign: TextAlign.start,
-                                                      ),
-                                                    ),
-                                                    Align(
-                                                      alignment: Alignment.topLeft,
-                                                      child: AutoSizeText(
-                                                        current.getAlbum,
-                                                        style: TextStyle(
-                                                          fontSize: 14,
-                                                          fontWeight: FontWeight.w500,
-                                                          color: thirdColor,
-                                                        ),
-                                                        overflow: TextOverflow.ellipsis,
-                                                        textAlign: TextAlign.start,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                            ),
-                                          ],
-                                        ),
-                                      );
+                                      return songButton(
+                                          context, k, current, 16, 14, 90);
                                     },
                                   ),
                                 ],
@@ -544,4 +296,118 @@ class _SongList extends State<SongList> {
       ),
     );
   }
+}
+
+Widget songButton(BuildContext context, Key k, Music current, double largeSize,
+    double smallSize, double albumSize) {
+  return FlatButton(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(4.0),
+    ),
+    splashColor: thirdColor.withAlpha(800),
+    highlightColor: thirdColor.withAlpha(600),
+    padding: EdgeInsets.all(0.0),
+    onPressed: () {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => DetailsScreen(current, k)));
+    },
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              new BoxShadow(
+                color: Colors.black26,
+                blurRadius: 2.0,
+                offset: Offset(0.0, 2),
+              ),
+            ],
+            borderRadius: BorderRadius.all(Radius.circular(4.0)),
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.all(Radius.circular(4.0)),
+            child: Hero(
+              tag: k,
+              child: Image.asset(
+                "assets/images/" + current.getAlbumImg,
+                width: albumSize,
+                height: albumSize,
+              ),
+            ),
+          ),
+        ),
+        Padding(padding: EdgeInsets.symmetric(horizontal: 8.0)),
+        Flexible(
+          child: Container(
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Column(
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: AutoSizeText(
+                      current.getTitle,
+                      style: TextStyle(
+                        fontSize: largeSize,
+                        fontWeight: FontWeight.w500,
+                        //color: thirdColor,
+                        color: Color(0xff469ba8),
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: AutoSizeText(
+                      current.getArtist,
+                      style: TextStyle(
+                        fontSize: smallSize,
+                        fontWeight: FontWeight.w500,
+                        color: thirdColor,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: AutoSizeText(
+                      current.getAlbum,
+                      style: TextStyle(
+                        fontSize: smallSize,
+                        fontWeight: FontWeight.w500,
+                        color: thirdColor,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget header(String title) {
+  return Column(
+    children: <Widget>[
+      Align(
+        alignment: Alignment.topLeft,
+        child: Text(
+          title,
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+            fontSize: 20,
+          ),
+        ),
+      ),
+      Padding(padding: EdgeInsets.symmetric(vertical: 8.0)),
+    ],
+  );
 }
