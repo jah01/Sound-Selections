@@ -79,17 +79,12 @@ class Music {
     return this.albumC;
   }
 
-  // List<List<String>> get getPeople {
-  //   return this.people;
-  // }
-
   List<List<String>> getPeople() {
     List<List<String>> list = new List();
       list.addAll(this.people);
     list.insert(0, [this.artist, this.artistRole, this.artistImg, this.artistC]);
     return list;
   }
-
 
   Map<String, String> getCredits() {
     Map<String, String> map = new Map();
