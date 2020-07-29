@@ -24,7 +24,6 @@ class Body extends StatelessWidget {
 
   Body(this.song, this.k);
 
-  //const Body({Key key, this.song}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     List<List<String>> people = song.getPeople();
@@ -35,28 +34,13 @@ class Body extends StatelessWidget {
         children: <Widget>[
       Container(
             width: MediaQuery.of(context).size.width,
-//            foregroundDecoration: new BoxDecoration(
-//              gradient: new LinearGradient(
-//                begin: Alignment.topCenter,
-//                end: Alignment.bottomCenter,
-//                colors: [
-//                  Colors.white.withOpacity(0.0),
-//                  Colors.white,
-//                ],
-//                stops: [.5, .8],
-//              ),
-//            ),
             child: FittedBox(
               child: Image.asset("assets/images/" + song.getAlbumImg),
               fit: BoxFit.fill,
             ),
           ),
           SingleChildScrollView(child: Column(
-
             children: <Widget>[
-//              Container(
-//                height: MediaQuery.of(context).size.width * .4,
-//              ),
               Container(
                 decoration: new BoxDecoration(
                   gradient: new LinearGradient(
@@ -65,7 +49,6 @@ class Body extends StatelessWidget {
                     colors: [
                       Colors.white.withOpacity(0.0),
                       Colors.white.withOpacity(0.2),
-                      //Colors.white.withOpacity(0.5),
                       Colors.white,
                     ],
                     stops: [0, .5, .85],
@@ -79,14 +62,13 @@ class Body extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(song.getTitle, style: TextStyle(fontSize: 24, color: Colors.grey[800], fontWeight: FontWeight.w600),),
-                    //Text(song.getTitle, style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
                     Wrap(
                       children: <Widget>[
-                        Text("by ${song.getArtist}", style: TextStyle(fontSize: 16, color: Colors.grey[600], fontWeight: FontWeight.w600),),
-                        Container(padding: EdgeInsets.symmetric(horizontal: defaultPadding / 2), child: Text("•", style: TextStyle(fontSize: 16, color: Colors.grey[600], fontWeight: FontWeight.w600),),),
-                        Text("on ${song.getAlbum}", style: TextStyle(fontSize: 16, color: Colors.grey[600], fontWeight: FontWeight.w600),),
-                        Container(padding: EdgeInsets.symmetric(horizontal: defaultPadding / 2), child: Text("•", style: TextStyle(fontSize: 16, color: Colors.grey[600], fontWeight: FontWeight.w600),),),
-                        Text(song.getRelease.year.toString(), style: TextStyle(fontSize: 16, color: Colors.grey[600], fontWeight: FontWeight.w600),),
+                        songSubheader("by ${song.getArtist}"),
+                        songSubheaderDivider(),
+                        songSubheader("on ${song.getAlbum}"),
+                        songSubheaderDivider(),
+                        songSubheader(song.getRelease.year.toString()),
                       ],
                     ),
                   ],
@@ -100,17 +82,10 @@ class Body extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Container(
-                      color: Colors.white,
-                      alignment: Alignment.topLeft,
-                      padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 6.0),
-                      child: Text("Genres", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
-                    ),
-                    //Container(color: Colors.white, padding: EdgeInsets.only(top: defaultPadding),),
+                    header("Genres"),
                     Container(
                       height: 32,
                       color: Colors.white,
-                      //color: Colors.grey,
                       margin: EdgeInsets.symmetric(horizontal: defaultPadding * 2),
                       child: ListView.separated(
                           scrollDirection: Axis.horizontal,
@@ -137,24 +112,14 @@ class Body extends StatelessWidget {
                           }
                       ),
                     ),
-                    Container(
-                      color: Colors.white,
-                      alignment: Alignment.topLeft,
-                      padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 8.0),
-                      child: Text("Review", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
-                    ),
+                    header("Review"),
                     Container(
                       color: Colors.white,
                       padding: EdgeInsets.symmetric(horizontal: defaultPadding * 2),
                       alignment: Alignment.topLeft,
                       child: Text(song.getDesc, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.grey[400]), textAlign: TextAlign.justify,),
                     ),
-                    Container(
-                      color: Colors.white,
-                      alignment: Alignment.topLeft,
-                      padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 8.0),
-                      child: Text("People", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
-                    ),
+                    header("People"),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: defaultPadding * 2),
                   child: SingleChildScrollView(
@@ -167,12 +132,7 @@ class Body extends StatelessWidget {
                     ),
                   ),
                 ),
-                    Container(
-                      color: Colors.white,
-                      alignment: Alignment.topLeft,
-                      padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 8.0),
-                      child: Text("Additional Information", style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
-                    ),
+                    header("Additional Information"),
                     Container(
                       alignment: Alignment.topLeft,
                       color: Colors.white,
@@ -200,39 +160,28 @@ class Body extends StatelessWidget {
             ],
           ),
           ),
-          Material(color: Colors.transparent, child: SafeArea(
-            child: Container(
-              margin: EdgeInsets.only(left: 6.0, top: 6.0),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
-                boxShadow: [
-                  new BoxShadow(
-                    color: Colors.black26,
-                    blurRadius: 4.0,
-                    offset: Offset(0.0, 2),
-                  ),
-                ],
-              ),
-              child: IconButton(
-                icon: Icon(
-                  Icons.arrow_back_ios,
-                ),
-                iconSize: 20,
-                color: thirdColor,
-                splashColor: Colors.transparent,
-                //hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ),
-          ),),
+          backButton(context),
         ],
       ),
     ),);
   }
+}
+
+Widget songSubheader(String str) {
+  return Text(str, style: TextStyle(fontSize: 16, color: Colors.grey[600], fontWeight: FontWeight.w600),);
+}
+
+Widget songSubheaderDivider() {
+  return Container(padding: EdgeInsets.symmetric(horizontal: defaultPadding / 2), child: Text("•", style: TextStyle(fontSize: 16, color: Colors.grey[600], fontWeight: FontWeight.w600),),);
+}
+
+Widget header(String str) {
+  return Container(
+    color: Colors.white,
+    alignment: Alignment.topLeft,
+    padding: EdgeInsets.fromLTRB(defaultPadding, defaultPadding, defaultPadding, 8.0),
+    child: Text(str, style: TextStyle(fontSize: 24, color: thirdColor, fontWeight: FontWeight.w600),),
+  );
 }
 
 Widget peopleCard(List<List<String>> people, List<String> person) {
@@ -267,4 +216,36 @@ Widget peopleCard(List<List<String>> people, List<String> person) {
       ],
     ),
   );
+}
+
+Widget backButton(BuildContext context) {
+  return Material(color: Colors.transparent, child: SafeArea(
+    child: Container(
+      margin: EdgeInsets.only(left: 6.0, top: 6.0),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.white,
+        boxShadow: [
+          new BoxShadow(
+            color: Colors.black26,
+            blurRadius: 4.0,
+            offset: Offset(0.0, 2),
+          ),
+        ],
+      ),
+      child: IconButton(
+        icon: Icon(
+          Icons.arrow_back_ios,
+        ),
+        iconSize: 20,
+        color: thirdColor,
+        splashColor: Colors.transparent,
+        //hoverColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+    ),
+  ),);
 }

@@ -2,7 +2,7 @@ import 'music.dart';
 
 //List<String> categories = ["Top Songs", "Completely Underground", "New Hip-Hop/R&B", "New Electronic", "Classics", "Old Beats", "Never Gets Old"]; //original categories
 List<String> categories = ["Summer 2020", "April 2020", "Late 2019"];
-//List<String> genres = ["chill", "rap", "electronic", "instrumental", "ballad", "classic", "indie pop", "none", "experimental", "r&b", "energetic", "sampling"]; //not needed (yet?)
+//List<String> genres = ["chill", "rap", "electronic", "instrumental", "ballad", "classic", "indie pop", "none", "experimental", "r&b", "energetic", "sampling"]; //original genres
 List<List<Music>> sortedCategories = new List(categories.length);
 
 void populateAll() {
