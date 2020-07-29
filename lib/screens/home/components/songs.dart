@@ -30,10 +30,7 @@ class _SongList extends State<SongList> {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.width -
-          (MediaQuery.of(context).padding.top -
-              MediaQuery.of(context).padding.bottom -
-              132.0),
+      height: MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top - MediaQuery.of(context).padding.bottom - 184.0,
       child: PageView.builder(
         onPageChanged: (i) {
           setState(() {

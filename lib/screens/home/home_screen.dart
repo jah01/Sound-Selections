@@ -10,7 +10,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(MediaQuery.of(context).padding.top + 40.0),
+        preferredSize: Size.fromHeight(60),
         child: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
